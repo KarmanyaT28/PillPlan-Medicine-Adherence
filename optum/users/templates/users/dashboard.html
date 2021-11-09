@@ -1,0 +1,179 @@
+
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'css/users/dashboard.css' %}">
+</head>
+<body>
+<header class="header" id="header">
+    <div class="container-fluid">
+        <img class="logo" src="{% static 'images/logo.png' %}">
+        <a style="color: white; margin-left: 20px;" href="about.html">About</a>
+        <a style="color: white; margin-left: 10px;" href="about.html">Contact Us</a>
+        <div class="nav-item dropdown" style="float: right;margin-right:-30px">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+      <div>
+          <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
+          <div class="nav_list">
+              <a href="/" class="nav_link active">
+                  <img class="icon icon-home" src="{% static 'images/home.png' %}">
+                  <div id="onhoverfb">Follow Us</div> 
+                  <span class="nav_name"></span>
+              </a>
+              <a href="#" class="nav_link">
+                <img class="icon icon-home" src="{% static 'images/med.png' %}">
+              </a>
+              <a href="#" class="nav_link">
+                <img class="icon icon-home" src="{% static 'images/bell.png' %}">
+              </a>
+              <a href="{% url 'foodrecom' %}" class="nav_link">
+                <img class="icon icon-home" src="{% static 'images/food.png' %}">
+              </a>
+              <a href="#" class="nav_link">
+                <img class="icon icon-home" src="{% static 'images/food.png' %}">
+              </a>
+              <a href="#" class="nav_link">
+                <img class="icon icon-home" src="{% static 'images/user.png' %}">
+              </a>
+          </div>
+      </div>
+  </nav>
+</div>
+<div class="row">
+  <div class="col-sm-9">
+      <div class="row">
+        <div class="col-md-" style="padding-left: 20px; padding-top: 20px;">
+          <img class="user-img" width="150" height="150"src="{% static 'images/user1.png' %}" alt="Avatar">
+          <h5 style="float: right"> Hello {{request.user.first_name}}</h5>
+        </div>
+        <div class="col-md-4">
+          
+        </div>
+        </div>
+  </div>
+  <div class="col-sm-3">
+    <h4>Emergency contact</h4>
+  </div>
+</div>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'css/users/dashboard.css' %}">
+</head>
+<body>
+<header class="header" id="header">
+    <div class="container-fluid">
+        <img class="logo" src="{% static 'images/logo.png' %}">
+        
+        <div class="nav-item dropdown" style="float: right;margin-right:20px">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+      <div>
+          <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
+          <div class="nav_list">
+              <a href="/" class="nav_link active">
+                  <img class="icon icon-home" src="{% static 'images/home.png' %}">
+                  <span class="nav_name">Home</span>
+              </a>
+              <a href="{% url 'pills' %}" class="nav_link">
+                <img class="icon icon-med" src="{% static 'images/med.png' %}">
+                <span class="nav_name">Medicines</span>
+              </a>
+              <a href="#" class="nav_link">
+                <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
+                <span class="nav_name">Notifications</span>
+              </a>
+              <a href="/chat" class="nav_link">
+                <img class="icon icon-food" src="{% static 'images/food.png' %}">
+                <span class="nav_name">Food Recommender</span>
+              </a>
+              <a href="#" class="nav_link">
+                <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                <span class="nav_name">Analytics</span>
+              </a>
+              <a href="#" class="nav_link">
+                <img class="icon icon-user" src="{% static 'images/user.png' %}">
+                <span class="nav_name">Profile</span>
+              </a>
+
+              
+
+          </div>
+      </div>
+  </nav>
+</div>
+<div class="row">
+  <div class="col-sm-9">
+      <div class="row upper-section">
+        <div class="col-md-7" style="padding-left: 20px; padding-top: 20px;">
+          <img class="user-img" style="float: left; " width="150" height="150"src="{% static 'images/user1.png' %}" alt="Avatar">
+          <h1 style="float: left; margin-top: 20px; margin-left: 20px"> Hello Joyeeta</h1>
+        </div>
+        <div class="col-md-5">
+          <h4 style="color: #002468;">Upcoming Medications:</h4>
+          <ol>
+            <li>4:00 p.m. Calpol 500mg</li>
+            <li>4:00 p.m. Calpol 500mg</li>
+            <li>4:00 p.m. Calpol 500mg</li>
+          </ol>
+        </div>
+        </div>
+        <div class="row lower-section">
+            <h3>User Progress</h3>
+        </div>
+      </div>
+  <div class="col-sm-3 justify-content-center">
+    <h5>Emergency contact</h5>
+    <div id="contact">
+      <img class="user-img" width="150" height="150"src="{% static 'images/user1.png' %}" alt="Avatar"><br><br>
+      <button class="btn btn-primary">Contact</button>
+      <button class="btn btn-primary">Modify</button>
+    </div>
+  </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

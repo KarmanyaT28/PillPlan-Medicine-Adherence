@@ -1,0 +1,97 @@
+{% load static %}
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/users/register.css' %}">
+    
+    <title>PillPlan</title>
+  </head>
+  <body>
+    
+    <div class="container">
+        <div class="white-box">
+           
+          <button><a href="{% url 'landing' %}">Landing</a></button>
+                <div class="RegBox">
+                    <img src="{% static 'images/regForm.png' %}"/>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                            
+                        <input type="text" name="username" placeholder="Username">
+                        <input type="password" name="password" placeholder="Password">  
+                        
+                        <input type="submit" value="Login">
+                </form>
+
+                {% for message in messages %}
+                    <p id="messages">{{message}}</p>
+                {% endfor %}
+                
+                <h3>Don't have an account?<a href="{% url 'register' %}">Register</a></h3>
+            </div>
+            </div>
+
+    </div>
+  
+  </body>
+</html>
+ -->
+
+
+
+
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <title>MS Teams Clone</title>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+     <link rel="stylesheet" href="{% static 'css/users/login.css' %}">
+ </head>
+ <body>
+ <div class="wrapper">
+   <div class="row align-items-start">
+         <div class="col-md-6">
+             <h1 class="quote" style="margin-top: 3%; margin-left: 5%"><b>Solutions for better health</b></h1>
+             
+             <img class="login-img" src="{% static 'images/login.png' %}"/>
+         </div>
+         <div class="col-md-6">
+             <div class="container">
+                 <h1><b>Welcome Back!</b></h1>
+                 <h3><b>Don't have an account?</b><a href="{% url 'register' %}"> Register</a></h3><br><br>
+                 <form class="form" method="POST" action="" >
+                  {% csrf_token %}
+                     <!-- <label for="email">User Id</label> -->
+                     <input type="text" name="uid" placeholder="Username"><br>
+                     <!-- <label for="password">Password</label> -->
+                     <input type="password" name="pwd" placeholder="Password"><br>
+                     <input type="submit" value="Login">
+                   </form>
+             </div>
+         </div>
+     </div>
+   <ul class="bg-bubbles">
+     <li></li>
+     <li></li>
+     <li></li>
+     <li></li>
+     <li></li>
+     <li></li>
+     <li></li>
+     <li></li>
+     <li></li>
+     <li></li>
+   </ul>
+ </div>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ </body>
+ 
+ </html>

@@ -1,0 +1,7 @@
+<h1>Add Pill</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Add</button>
+</form>

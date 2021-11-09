@@ -1,0 +1,106 @@
+{% load static %}
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/users/register.css' %}">
+    
+    <title>PillPlan</title>
+  </head>
+  <body>
+    
+    <div class="container">
+        <div class="white-box">
+           
+          <button><a href="{% url 'landing' %}">Landing</a></button>
+                <div class="RegBox">
+                    <img src="{% static 'images/regForm.png' %}"/>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                            {{form.username.label}}
+                            {{form.username}}
+
+                            {{form.first_name.label}}
+                            {{form.first_name}}
+
+                            {{form.last_name.label}}
+                            {{form.last_name}}
+
+
+                            {{form.email.label}}
+                            {{form.email}}
+
+
+                            {{form.password1.label}}
+                            {{form.password1}}
+
+                            {{form.password2.label}}
+                            {{form.password2}}
+                        
+                        <input type="submit" name="Create User">
+                </form>
+                {{form.errors}}
+                
+                <h3>Already have an account?<a href="{% url 'login' %}">Login</a></h3>
+            </div>
+            </div>
+
+    </div>
+  
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MS Teams Clone</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'css/users/signup.css' %}">
+</head>
+<body>
+<div class="wrapper">
+	<div class="row align-items-start">
+        <div class="col-md-6">
+            <h1 class="quote" style="margin-top: 3%; margin-left: 5%"><b>Solutions for better health</b></h1>
+            <img class="reg-img" src="{% static 'images/regForm.png' %}"/>
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <h1><b>Welcome Back!</b></h1>
+                <h3>Already have an account?<a href="{% url 'login' %}">Login</a></h3><br><br>
+                <form class="form" method="POST" action="" >
+                  {% csrf_token %}
+                     <!-- <label for="email">User Id</label> -->
+                     <input type="text" name="username" placeholder="Username"><br>
+                        <input type="text" name="first_name" placeholder="First Name"><br>
+                        <input type="text" name="last_name" placeholder="Last Name"><br>
+                        <input type="email" name="email" placeholder="Email"><br>
+                        <input type="password" name="password1" placeholder="Password"><br>
+                        <input type="password" name="password2" placeholder="Confirm Password"><br>
+                        <button type="submit" name="Create User" value="Signup">Sign Up</button>
+                   </form>
+                
+            </div>
+        </div>
+    </div>
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
