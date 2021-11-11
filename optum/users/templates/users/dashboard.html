@@ -116,7 +116,7 @@
                   <img class="icon icon-home" src="{% static 'images/home.png' %}">
                   <span class="nav_name">Home</span>
               </a>
-              <a href="{% url 'pills' %}" class="nav_link">
+              <a href="{% url 'medicines' %}" class="nav_link">
                 <img class="icon icon-med" src="{% static 'images/med.png' %}">
                 <span class="nav_name">Medicines</span>
               </a>
@@ -148,7 +148,7 @@
       <div class="row upper-section">
         <div class="col-md-7" style="padding-left: 20px; padding-top: 20px;">
           <img class="user-img" style="float: left; " width="150" height="150"src="{% static 'images/user1.png' %}" alt="Avatar">
-          <h1 style="float: left; margin-top: 20px; margin-left: 20px"> Hello Joyeeta</h1>
+          <h1 style="float: left; margin-top: 20px; margin-left: 20px"> Hello {{request.user.first_name}}</h1>
         </div>
         <div class="col-md-5">
           <h4 style="color: #002468;">Upcoming Medications:</h4>

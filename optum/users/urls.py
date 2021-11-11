@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
-from .views import AddPillView, HomeView , PillsDetailView , DeletePillView
-
+from .views import TaskList , TaskDetail , TaskCreate, TaskUpdate , TaskDelete
 
 
 urlpatterns = [
@@ -15,9 +14,11 @@ urlpatterns = [
     path('dashboard/', views.dashboard,name='dashboard'),
     path('profile/', views.profile,name='profile'),
     path('foodrecom/', views.foodrecom,name='foodrecom'),
-    # path('pills/', views.pills,name='foodrecom'),
-    path('pills/',HomeView.as_view(),name='pills'),
-    path('pillsdetail/<int:pk>',PillsDetailView.as_view(),name='pillsdetail'),
-    path('add_pill/',AddPillView.as_view(),name='add_pill'),
-    path('pillsdetail/<int:pk>/delete',DeletePillView.as_view(),name='delete_pill'),
+    path('medicine/', TaskList.as_view(),name='medicines'),
+    path('medicine/<int:pk>/', TaskDetail.as_view(),name='medicine'),
+    path('medicine-edit/<int:pk>/', TaskUpdate.as_view(),name='medicine-edit'),
+    path('medicine-delete/<int:pk>/', TaskDelete.as_view(),name='medicine-delete'),
+    path('medicine-create/',TaskCreate.as_view(),name='medicine-create'),
+    
+   
 ]

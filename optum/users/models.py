@@ -1,69 +1,104 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.expressions import Value
 from django.db.models.fields.related import ForeignKey
 from django.utils.translation import gettext_lazy
 from django.utils import timezone
 from django.urls import reverse
 from datetime import datetime, date
 
+from django.contrib.auth.models import AbstractBaseUser , BaseUserManager
+
+
+class MyUserManager(BaseUserManager):
+    def create_user(self,username,email,first_name,last_name,phone,password=None):
+        if not username:
+            raise ValueError("Username is required")
+
+        if not email:
+            raise ValueError("Email is required")
+
+        if not first_name:
+            raise ValueError("First Name is required")
+
+        if not last_name:
+            raise ValueError("Last Name is required")
+
+        if not phone:
+            raise ValueError("Valid Phone Number is required")
+
+
+        user=self.model(
+            username=username,
+            email=self.normalize_email(email),
+            first_name = first_name,
+            last_name = last_name,
+            phone=phone
+
+        )
+
+        user.set_password(password)
+        user.save(using =self._db)
+        return user
+
+
+    def create_superuser(self,username,email,first_name,last_name,phone,password=None):
+        user = self.create_user(
+            username=username,
+            email = email,
+            first_name = first_name,
+            last_name = last_name,
+            phone=phone,
+            password=password
+        )
+        user.is_staff = True
+        user.is_admin = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
+
+
+
+class MyUser(AbstractBaseUser):
+    username = models.CharField(verbose_name="Username" , max_length=50,unique=True, blank=True, null=True)
+    email = models.EmailField(verbose_name="email address", max_length=60 , unique=True)
+    first_name = models.CharField(verbose_name='first name' , max_length=200,blank=True)
+    last_name = models.CharField(verbose_name='last name' , max_length=200,blank=True)
+    phone= models.CharField(max_length=20,verbose_name="contact number")
+    # date_joined = models.DateTimeField(verbose_name="date joined",auto_now_add=True)
+    # age = models.IntegerField(verbose_name='age',null=True, blank=True)
+    # gender = models.CharField(verbose_name='gender' , max_length=15)
+    # emergency_name = models.CharField(verbose_name='emergency contact name' , max_length=200)
+    # emergency_email= models.EmailField(verbose_name='emergency email address' ,max_length=60)
+    # user_type = models.CharField(verbose_name='User Type', max_length = 50, default='Type A')
+    # filled_status = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default = False)
 
 
 
 
-# class UserManager(BaseUserManager):
-#     def create_superuser(self,email,username,first_name,last_name,age,gender,password,**other_fields):
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['first_name','last_name','phone','email']
+    objects = MyUserManager()
+    
 
-#         other_fields.setdefault('is_staff',True)
-#         other_fields.setdefault('is_superuser',True)
-#         other_fields.setdefault('is_active',True)
-
-
-#         if other_fields.get('is_staff') is not True:
-#             raise ValueError('Superuser must be assigned to is_staff=True.')
-
-#         if other_fields.get('is_superuser') is not True:
-#             raise ValueError('Superuser must be assigned to is_superuser=True.')
-
-#         return self.create_user(email,username,first_name,last_name,age,gender,password,**other_fields)
-
-#     def create_user(self,email,username,first_name,last_name,age,gender,password,**other_fields):
-#         if not email:
-#             raise ValueError(gettext_lazy('You must provide an email address'))
-
-        
+    def __str__(self):
+        return self.first_name + ' | ' + (self.last_name)
 
 
-#         email = self.normalize_email(email)
-#         user = self.model(email=email,username=username,first_name=first_name,last_name=last_name,age=age,gender=gender, **other_fields)
-#         user.set_password(password)
-#         user.save()
-#         return user
+    def has_perm(self,perm,obj=None):
+        return True
 
+    def has_module_perms(self,app_label):
+        return True
 
     
 
-# class User(AbstractBaseUser , PermissionsMixin):
-#     username = models.CharField(max_length=150,unique=True,default='Username')
-#     userid = models.IntegerField(verbose_name='UserId',primary_key=True)
-#     age = models.IntegerField(verbose_name='age',null=True, blank=True)
-#     email = models.EmailField(gettext_lazy('email address') , unique=True)
-#     first_name = models.CharField(verbose_name='first name' , max_length=200,blank=True)
-#     last_name = models.CharField(verbose_name='last name' , max_length=200,blank=True)
-#     gender = models.CharField(verbose_name='gender' , max_length=15)
-#     password = models.CharField(max_length=50)
-#     emergency_name = models.CharField(verbose_name='emergency contact name' , max_length=200)
-#     emergency_email= models.EmailField(verbose_name='emergency email address' ,max_length=60)
-#     user_type = models.CharField(verbose_name='User Type', max_length = 50, default='Type A')
-#     filled_status = models.BooleanField(default=False)
-#     is_staff = models.BooleanField(default=False)
-#     is_active = models.BooleanField(default=False)
 
-#     objects= UserManager()
-
-#     USERNAME_FIELD = 'email'
-#     REQUIRED_FIELDS = ['username','first_name','last_name','age','gender']
-#     def __str__(self):
-#         return self.username
+    
 
 
 # class Pillset():
@@ -85,22 +120,19 @@ from datetime import datetime, date
 
 
         
+class Medicine(models.Model):
+    user = models.ForeignKey(MyUser,on_delete = models.CASCADE,null=True, blank=True)
+    title = models.CharField(max_length=200)
+    description = models.TextField(null=True,blank=True)
+    complete = models.BooleanField(default=False)
+    posted = models.DateTimeField(auto_now_add=True)
 
-
-class Pill(models.Model):
-    title = models.CharField(max_length=255)
-    author = models.ForeignKey(User,on_delete= models.CASCADE)
-    body = models.TextField()
-    drugpublish_date = models.DateField(auto_now_add=True)
 
 
     def __str__(self):
-        return self.title + ' | ' + str(self.author)
+        return self.title
 
 
-    def get_absolute_url(self):
-        return reverse('pillsdetail' , args=(str(self.id)))
+    class Meta:
+        ordering=['complete']
 
-
-    
- 

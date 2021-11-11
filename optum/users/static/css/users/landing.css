@@ -28,7 +28,7 @@ hr {
 .form-control::placeholder { color: #999; }
 
 .tm-header {
-    background-color: #0CC;
+    background-color: rgba(28, 180, 125, 0.8);
     color: white;
     
     position: fixed;
@@ -69,7 +69,7 @@ hr {
     justify-content: center;
 }
 
-.tm-site-logo i { color: #0CC; }
+.tm-site-logo i { color: rgba(28, 180, 125, 0.8); }
 
 .tm-main {
     margin-left: 400px;
@@ -105,7 +105,7 @@ hr {
 .tm-nav-item:hover .tm-nav-link,
 .tm-nav-item.active .tm-nav-link
  {
-    color: #0CC;
+    color: rgba(28, 180, 125, 0.8);
     background-color: white;
     text-decoration: none;
 }
@@ -148,7 +148,7 @@ ul {
 }
 
 .tm-social-icon { 
-    color: #0CC;    
+    color: rgba(28, 180, 125, 0.8);   
     transition: all 0.3s ease;
 }
 
@@ -170,7 +170,7 @@ ul {
     width: 480px;
     margin-right: 30px;
     border-radius: 0;
-    border-color: #0CC;
+    border-color: rgba(28, 180, 125, 0.8);
     font-size: 1.2rem;
 }
 
@@ -178,11 +178,11 @@ ul {
     width: 60px;
     height: 60px;
     border: none;
-    background-color: #0CC;
+    background-color: rgba(28, 180, 125, 0.8);
     transition: all 0.3s ease;
 }
 
-.tm-search-button:hover { background-color: #09b6b6; }
+.tm-search-button:hover { background-color: rgba(28, 180, 125, 0.8); }
 
 .tm-search-icon {
     color: white;
@@ -231,7 +231,7 @@ ul {
 .tm-new-badge {
     top: 25px;
     right: -10px;
-    background-color: #0CC;
+    background-color: rgba(28, 180, 125, 0.8);
     color: white;
     padding: 5px 20px;
 }
@@ -246,7 +246,7 @@ ul {
     color: #999;
 }
 
-.tm-post-link:hover .tm-post-title { color: #0CC; }
+.tm-post-link:hover .tm-post-title { color: rgba(28, 180, 125, 0.8); }
 
 .tm-btn {
     display: inline-block;
@@ -256,7 +256,7 @@ ul {
 }
 
 .tm-btn-primary {    
-    background-color: #0CC;
+    background-color: rgba(28, 180, 125, 0.8);
     color: white;  
     padding: 8px 43px;
     border: none;
@@ -265,7 +265,7 @@ ul {
 .tm-btn-small { padding: 8px 33px; }
 
 .tm-btn-primary:hover {
-    background-color: #09b6b6;
+    background-color: rgba(28, 180, 125, 0.8);
     color: white;
 }
 
@@ -289,7 +289,7 @@ ul {
 
 .tm-paging-item .tm-paging-link:hover,
 .tm-paging-item.active .tm-paging-link {
-    background-color: #0CC;
+    background-color: rgba(28, 180, 125, 0.8);
     color: white;
 }
 
@@ -299,7 +299,7 @@ ul {
     cursor: not-allowed;
 }
 
-.tm-external-link { color: #0CC; }
+.tm-external-link { color: rgba(28, 180, 125, 0.8);}
 .tm-external-link:hover { color: #09b6b6; }
 
 .tm-paging-wrapper {
@@ -319,7 +319,7 @@ ul {
 .tm-copyright { text-align: right; }
 
 /* Single Post page */
-hr.tm-hr-primary { border-top: 5px solid #0CC; }
+hr.tm-hr-primary { border-top: 5px solid rgba(28, 180, 125, 0.8); }
 
 video {
     width: 100%;
@@ -340,7 +340,7 @@ video {
 
 .form-control {
     height: 45px;
-    border-color: #0CC;
+    border-color: rgba(28, 180, 125, 0.8);
     border-radius: 0;
 }
 
@@ -403,7 +403,7 @@ a:hover figcaption { color: #056767; }
 .tm-social-links li a {
     display: block;
     color: white;
-    background-color: #0CC;
+    background-color: rgba(28, 180, 125, 0.8);
     width: 45px;
     height: 45px;    
     margin-right: 15px;    

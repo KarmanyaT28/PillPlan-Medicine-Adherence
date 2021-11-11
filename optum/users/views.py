@@ -1,15 +1,21 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render , redirect
 from django.forms import inlineformset_factory
 from django.views.generic import ListView , DetailView , CreateView , DeleteView
+from django.views.generic.edit import UpdateView
 from .models import *
 # from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from .models import Pill
-from .forms import PillForm
+# from .models import Pill
+# from .forms import PillForm
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+
 
 
 def landing(request):
@@ -21,32 +27,7 @@ def about(request):
 def contact(request):
     return render(request,'users/contact.html')
 
-# def landing(request):
-#     return render(request,'users/landing.html')
 
-
-class HomeView(ListView):
-    model = Pill
-    template_name = 'users/pills.html'
-    ordering = ['-drugpublish_date']
-
-
-class PillsDetailView(DetailView):
-    model = Pill
-    template_name = 'users/pills_details.html'
-
-
-class AddPillView(CreateView):
-    model = Pill
-    form_class = PillForm
-    template_name = 'users/add_pill.html'
-    # fields = '__all__'
-
-
-class DeletePillView(DeleteView):
-    model = Pill
-    template_name = 'users/deletepill.html'
-    success_url = reverse_lazy('pills')
 
 def registerpage(request):
     if request.user.is_authenticated:
@@ -97,7 +78,7 @@ def loginpage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('login')
+    return redirect('landing')
 
 
 @login_required(login_url = 'login')
@@ -115,6 +96,59 @@ def profile(request):
 def foodrecom(request):
     return render(request,'users/foodrecom.html')
 
+
+# @login_required(login_url = 'login')
+# def medicineList(request):
+#     return render(request,'users/medicinelist.html')
+
+
+class TaskList(LoginRequiredMixin,ListView):
+    model = Medicine
+    context_object_name = 'medicines'
+    template_name = "users/Medicines/medicinelist.html"
+    
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['medicines'] = context['medicines'].filter(user=self.request.user)
+        context['count'] = context['medicines'].filter(complete=False).count()
+        return context
+
+
+
+
+
+class TaskDetail(LoginRequiredMixin,DetailView):
+    model = Medicine
+    context_object_name = 'medicine'
+    template_name = "users/Medicines/medicinedetail.html"
+
+
+class TaskCreate(LoginRequiredMixin,CreateView):
+    model = Medicine
+    fields = ['title','description','complete']
+    template_name = "users/Medicines/medicineform.html"
+    success_url = reverse_lazy('medicines')
+
+
+    def form_valid(self,form):
+        form.instance.user = self.request.user
+        return super(TaskCreate,self).form_valid(form)
+    
+
+class TaskUpdate(LoginRequiredMixin,UpdateView):
+    model=Medicine
+    fields = ['title','description','complete']
+    template_name = "users/Medicines/medicineform.html"
+    success_url = reverse_lazy('medicines')
+
+
+class TaskDelete(LoginRequiredMixin,DeleteView):
+    model=Medicine
+    context_object_name = 'medicine'
+    template_name = "users/Medicines/medicine_confirm_delete.html"
+    success_url = reverse_lazy('medicines')
 
 
 

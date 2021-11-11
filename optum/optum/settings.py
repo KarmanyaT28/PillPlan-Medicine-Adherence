@@ -70,7 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'optum.wsgi.application'
 
-
+AUTH_USER_MODEL = "users.MyUser"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -114,6 +114,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
