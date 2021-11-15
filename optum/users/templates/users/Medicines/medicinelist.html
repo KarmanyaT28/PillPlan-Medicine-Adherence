@@ -16,8 +16,9 @@
 <table>
     <tr>
         <th>Medicines</th>
+        <h3>You have <i>{{count}}</i> medicines scheduled for today</h3>
     </tr>
-    {% for medicine in object_list %}
+    {% for medicine in medicines %}
     <tr>
         <td>{{ medicine.title }}</td>
         <td><a href= "{% url 'medicine' medicine.id %}">View</a></td>

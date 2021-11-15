@@ -1,3 +1,4 @@
+
 from django.http.response import HttpResponse
 from django.shortcuts import render , redirect
 from django.forms import inlineformset_factory
@@ -14,8 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-
+import joblib
 
 
 def landing(request):
@@ -26,7 +26,6 @@ def about(request):
 
 def contact(request):
     return render(request,'users/contact.html')
-
 
 
 def registerpage(request):
@@ -52,7 +51,11 @@ def registerpage(request):
 
 
 def loginpage(request):
+    
+
+
     if request.user.is_authenticated:
+        
         return redirect('dashboard')
 
     else:
@@ -91,10 +94,109 @@ def profile(request):
     return render(request,'users/profile.html')
 
 
-
 @login_required(login_url = 'login')
 def foodrecom(request):
-    return render(request,'users/foodrecom.html')
+    # form = show_entry_fields()
+    return render(request,'users/foodrecom.html',{'form':form})
+
+@login_required(login_url = 'login')
+def result(request):
+    classifier = joblib.load("D:/django/Optum-Stratethon/finalized_usertype.sav")
+    lis = []
+
+    lis.append(request.GET['q1'])
+    lis.append(request.GET['q2'])
+    lis.append(request.GET['q3'])
+    lis.append(request.GET['q4'])
+    lis.append(request.GET['q5'])
+    lis.append(request.GET['q6'])
+    lis.append(request.GET['q7'])
+    lis.append(request.GET['q8'])
+    lis.append(request.GET['q9'])
+    lis.append(request.GET['q10'])
+
+
+    print(lis)
+
+    ans = classifier.predict([lis])
+
+    return render(request,'users/result.html',{'ans':ans})
+
+
+
+@login_required(login_url = 'login')
+def gettype(request):
+    return render(request,'users/gettype.html')
+
+
+
+#----------------------------------------------------------------------------------------
+
+
+
+@login_required(login_url = 'login')
+def bmi(request):
+    return render(request,'users/bmi.html')
+
+
+import numpy as np
+
+
+
+
+
+
+@login_required(login_url = 'login')
+def bmiresult(request):
+
+
+    clsf = joblib.load("D:/django/Optum-Stratethon/bmi.sav")
+    # lis = []
+
+    # lis.append(request.GET['height'])
+    # lis.append(request.GET['weight'])
+    # lis.append(request.GET['gender'])
+
+
+    # ans = clsf.predict([lis])
+
+    # return render(request,'users/bmiresult.html',{'ans':ans})
+    if request.method == 'POST':
+        
+        a1 = float(request.POST['height'])
+        a2 = float(request.POST['weight'])
+        a3 = float(request.POST['gender'])
+
+        list1=[[a1,a2,a3]]
+        prediction = clsf.predict(list1)
+
+    output = prediction[0]
+    t1='Result: Extremely Weak'
+    t2='Result: Weak'
+    t3='Result: Normal'
+    t4='Result: Overweight'
+    t5='Result: Obesity'
+    t6='Result: Extreme Obesity'
+    t7='Can\'t Predict'
+    if(output==0):
+        return render(request,'users/bmi_result.html', {'prediction_text':t1})
+    elif(output==1):
+        return render(request,'users/bmi_result.html',  {'prediction_text':t2})
+    elif(output==2):
+        return render(request,'users/bmi_result.html',  {'prediction_text':t3})
+    elif(output==3):
+        return render(request,'users/bmi_result.html',  {'prediction_text':t4})
+    elif(output==4):
+        return render(request,'users/bmi_result.html',  {'prediction_text':t5})
+    elif(output==5):
+        return render(request,'users/bmi_result.html',  {'prediction_text':t6})
+    else:
+        return render(request,'users/bmi_result.html',  {'prediction_text':t7})
+    
+
+
+
+
 
 
 # @login_required(login_url = 'login')
@@ -127,7 +229,7 @@ class TaskDetail(LoginRequiredMixin,DetailView):
 
 class TaskCreate(LoginRequiredMixin,CreateView):
     model = Medicine
-    fields = ['title','description','complete']
+    fields = ['title','description','complete','drug_type','drug_qty','start_date','end_date','drug_frequency','upload','man_date','exp_date','drug_comments']
     template_name = "users/Medicines/medicineform.html"
     success_url = reverse_lazy('medicines')
 

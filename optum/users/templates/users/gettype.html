@@ -1,0 +1,97 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Type</title>
+    </head>
+    <body>
+        <a href="{% url 'dashboard' %}" class="nav_link">
+            
+            <span class="nav_name">Head back to dashboard</span>
+          </a>
+        <form action="{% url 'result' %}" name="usertype">
+            {% csrf_token %}
+            <label>1. Do you ever forget to take or buy your medicine ?</label><br>
+            <input type="radio" id="yes" name="q1" value="1" required name="q1">
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="q1" value="0">
+              <label for="no">No</label><br>
+
+
+
+            <label>2. I would rather be ill than taking medication</label><br>
+            <input type="radio" id="yes" name="q2" value="1" required name="q2">
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="q2" value="0">
+              <label for="no">No</label><br>
+
+
+
+            <label>3. It is unnatural for my mind and body to be controlled by medications</label><br>
+            <input type="radio" id="yes" name="q3" value="1" required name="q3">
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="q3" value="0">
+              <label for="no">No</label><br>
+
+
+
+            <label>4.If I take medication, it's only because of pressure from other people </label><br>
+            <input type="radio" id="yes" name="q4" value="1" required name="q4">
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="q4" value="0">
+              <label for="no">No</label><br>
+
+
+
+            <label>5. Do you stop taking medications when you feel better? </label><br>
+            <input type="radio" id="yes" name="q5" value="1" required name="q5">
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="q5" value="0">
+              <label for="no">No</label><br>
+
+
+
+            <label>6. Are you careless at times about taking your medications? </label><br>
+            <input type="radio" id="yes" name="q6" value="1" required name="q6">
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="q6" value="0">
+              <label for="no">No</label><br>
+
+
+
+
+            <label>7. Do u ever face the issue of opening the medication container or using medication devices?</label><br>
+            <input type="radio" id="yes" name="q7" value="1" required name="q7">
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="q7" value="0">
+              <label for="no">No</label><br>
+
+
+
+
+            <label>8. Do u suffer from irregular supply of medicine due to your age/locality/disability/language barrier? </label><br>
+            <input type="radio" id="yes" name="q8" value="1" required name="q8">
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="q8" value="0">
+              <label for="no">No</label><br>
+
+
+
+            <label>9. Do u face ever fail to initially fill or refill a prescription due to financial issues?</label><br>
+            <input type="radio" id="yes" name="q9" value="1" required name="q9">
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="q9" value="0">
+              <label for="no">No</label><br>
+
+
+
+            <label>10. Medication makes me feel tired and sluggish</label><br>
+            <input type="radio" id="yes" name="q10" value="1" required name="q10"> 
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="q10" value="0">
+              <label for="no">No</label><br>
+            <input type="submit" value="Submit" name="submit"> 
+        </form>
+    </body>
+</html>

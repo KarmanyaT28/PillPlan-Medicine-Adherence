@@ -2,22 +2,28 @@
 <html>
 <body>
 
-<form>
-      <span >Favorite Food<font style="color:red">*</font></span>
+<form >
+
+      {% csrf_token %}
+      <h1>Fill The Form</h1>
+      {{ form }}
+      <!-- <span >Favorite Food<font style="color:red">*</font></span>
       <input type="text" required name="favfood" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-  
+      <br>
+      <br>
   
     	<span>Food You Prefer</span>
-    	<select multiple title="Choose food you prefer...." name="food">
+    	<select multiple title="Choose food you prefer...." required name="favfood1" name="food">
     		<option value="veg">Veg</option>
     		<option value="non-veg">Non-Veg</option>
     	</select>
   
-    
+      <br>
+      <br>
     
    
     	<span>Diet You Prefer</span>
-    	<select multiple  title="Choose from the following..." name="diet">
+    	<select multiple  title="Choose from the following..." required name="favfood2" name="diet">
         	<option value="vegan_diet">Vegan Diet</option>
         	<option value="high_protien_diet">High Protein Diet</option>
     		<option value="type_a_diet">Type A Diet</option>
@@ -37,12 +43,13 @@
       </select>
   
     
-    
+      <br>
+      <br>
     
     
    
     	<span>Cuisines You Prefer </span>
-    	<select multiple  title="Choose from the following..." name="cuisines">
+    	<select multiple  title="Choose from the following..." required name="favfood3" name="cuisines">
             <option value="chinese">Chinese</option>
             <option value="italian">Italian</option>
             <option value="mexican">Mexican</option>
@@ -57,10 +64,10 @@
                 
       </select>
      
-    
-  
+      <br>
+      <br>
     	<span>Nutrients You Prefer</span>
-    	<select multiple title="Choose from the following..." name="nutrient">
+    	<select multiple title="Choose from the following..." required name="favfood4" name="nutrient">
         	<option value="protien">Protien</option>
         	<option value="calcium">Calcium</option>
     		<option value="carbohydrates">Carbohydrates</option>
@@ -80,10 +87,10 @@
             <option value="selenium">Selenium</option>
       </select>
      
-    
-   
+      <br>
+      <br>
     	<span>Do You Suffer From Any Disease</span>
-    	<select multiple  title="Choose from the following..."  name="disease">
+    	<select multiple  title="Choose from the following..." required name="favfood5" name="disease">
         	<option value="heart_disease">Heart Disease</option>
     		<option value="diabeties">Diabetes</option>
     		<option value="cancer">Cancer</option>
@@ -98,11 +105,12 @@
             <option value="hypertension">Hypertension</option>    
       </select>
   
-    
+      <br>
+      <br>
   
     
 
-    <input type="submit" text="submit">
+    <input type="submit" value="submit"> -->
 
 
 </form>

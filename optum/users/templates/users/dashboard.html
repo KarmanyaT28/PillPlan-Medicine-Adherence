@@ -124,13 +124,22 @@
                 <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
                 <span class="nav_name">Notifications</span>
               </a>
-              <a href="/chat" class="nav_link">
+              <a href="{% url 'foodrecom' %}" class="nav_link">
                 <img class="icon icon-food" src="{% static 'images/food.png' %}">
                 <span class="nav_name">Food Recommender</span>
               </a>
               <a href="#" class="nav_link">
                 <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
                 <span class="nav_name">Analytics</span>
+              </a>
+              <a href="{% url 'gettype' %}" class="nav_link">
+                <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                <span class="nav_name">Get your type</span>
+              </a>
+
+              <a href="{% url 'bmi' %}" class="nav_link">
+                <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                <span class="nav_name">Get your BMI</span>
               </a>
               <a href="#" class="nav_link">
                 <img class="icon icon-user" src="{% static 'images/user.png' %}">
@@ -151,12 +160,8 @@
           <h1 style="float: left; margin-top: 20px; margin-left: 20px"> Hello {{request.user.first_name}}</h1>
         </div>
         <div class="col-md-5">
-          <h4 style="color: #002468;">Upcoming Medications:</h4>
-          <ol>
-            <li>4:00 p.m. Calpol 500mg</li>
-            <li>4:00 p.m. Calpol 500mg</li>
-            <li>4:00 p.m. Calpol 500mg</li>
-          </ol>
+          
+          
         </div>
         </div>
         <div class="row lower-section">
@@ -164,7 +169,7 @@
         </div>
       </div>
   <div class="col-sm-3 justify-content-center">
-    <h5>Emergency contact</h5>
+    <h5>Emergency contact : {{request.user.emergency_name}}</h5>
     <div id="contact">
       <img class="user-img" width="150" height="150"src="{% static 'images/user1.png' %}" alt="Avatar"><br><br>
       <button class="btn btn-primary">Contact</button>
