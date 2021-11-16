@@ -90,7 +90,53 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link rel="stylesheet" href="{% static 'css/users/dashboard.css' %}">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+      window.onload = function () {
+        CanvasJS.addColorSet("greenShades",
+                [//colorSet Array
+
+                "#2F4F4F",
+                "#008080",
+                "#2E8B57",
+                "#3CB371",
+                "#90EE90"                
+                ]);
+      var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        animationDuration: 3000,
+        colorSet: "greenShades", // "light1", "light2", "dark1", "dark2"
+        title:{
+          text: "Medication Trend of past 7 days"
+        },
+        axisY: {
+          title: "Doses taken"
+        },
+        data: [{        
+          type: "line",  
+          showInLegend: true, 
+          legendMarkerColor: "grey",
+          legendText: "Days of the week",
+          dataPoints: [    
+          { y: 3,  label: "Sunday" }, 
+          { y: 3,  label: "Monday" },
+            { y: 2,  label: "Tuesday" },
+            { y: 3,  label: "Wednesday" },
+            { y: 3,  label: "Thursday" },
+            { y: 0, label: "Friday" },
+            { y: 1,  label: "Saturday" },
+          ]
+        }]
+      });
+      chart.render();
+      
+      }
+      </script>
 </head>
 <body>
 <header class="header" id="header">
@@ -112,7 +158,7 @@
       <div>
           <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
           <div class="nav_list">
-              <a href="/" class="nav_link active">
+              <a href="{% url 'dashboard' %}" class="nav_link active">
                   <img class="icon icon-home" src="{% static 'images/home.png' %}">
                   <span class="nav_name">Home</span>
               </a>
@@ -120,10 +166,10 @@
                 <img class="icon icon-med" src="{% static 'images/med.png' %}">
                 <span class="nav_name">Medicines</span>
               </a>
-              <a href="#" class="nav_link">
+              <!-- <a href="#" class="nav_link">
                 <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
                 <span class="nav_name">Notifications</span>
-              </a>
+              </a> -->
               <a href="{% url 'foodrecom' %}" class="nav_link">
                 <img class="icon icon-food" src="{% static 'images/food.png' %}">
                 <span class="nav_name">Food Recommender</span>
@@ -137,6 +183,10 @@
                 <span class="nav_name">Get your type</span>
               </a>
 
+              <a href="{% url 'gamification' %}" class="nav_link">
+                <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                <span class="nav_name">Games</span>
+              </a>
               <a href="{% url 'bmi' %}" class="nav_link">
                 <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
                 <span class="nav_name">Get your BMI</span>
@@ -160,14 +210,33 @@
           <h1 style="float: left; margin-top: 20px; margin-left: 20px"> Hello {{request.user.first_name}}</h1>
         </div>
         <div class="col-md-5">
-          
-          
+          <h4 style="color: #002468;">💊Upcoming Medications💊</h4>
+          <ol class="medicine-list">
+            <li>4:00 p.m. Calpol 500mg</li>
+            <li>4:00 p.m. Calpol 500mg</li>
+            <li>4:00 p.m. Calpol 500mg</li>
+          </ol>
         </div>
         </div>
         <div class="row lower-section">
-            <h3>User Progress</h3>
+          <div class="col-md-4">
+            <div class="row">
+              <h5 style="text-align: center;">Level: 4 - Health Champ 🏆</h5>
+              <br>
+              <div class="progress">
+                <div class="progress-value"></div>
+              </div>
+              <p style="font-size:12px;">*30 points to unlock level 5*</p>
+            </div>
+            <div class="row">
+              <h5 style="text-align: center;">Points ⭐</h5>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div id="chartContainer" style="height: 280px; width: 100%;"></div>
+          </div>
         </div>
-      </div>
+        </div>
   <div class="col-sm-3 justify-content-center">
     <h5>Emergency contact : {{request.user.emergency_name}}</h5>
     <div id="contact">

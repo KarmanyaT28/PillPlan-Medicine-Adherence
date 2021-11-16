@@ -1,0 +1,151 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Infogame</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'css/users/dashboard.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <style>
+        #game-frame{
+            height: 520px;
+            width: 1200px;
+        }
+        #myProgress {
+          width: 100%;
+          background-color: #F7F6FB;
+          border-radius: 5px;
+        }
+
+        #myBar {
+          width: 1%;
+          height: 30px;
+          background-color: #00455D;
+          border-radius: 5px;
+          padding: 2px;
+        }
+        iframe{
+          border: none;
+          margin-left: 80px;;
+        }
+        .btn-dark{
+          width: 100px;
+        }
+    </style>
+</head>
+<body>
+<header class="header" id="header">
+    <div class="nav-item dropdown" style="float: right;margin-right:20px">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+            <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+</header>
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+      <div>
+        <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
+        <div class="nav_list">
+            <a href="/" class="nav_link active">
+                <img class="icon icon-home" src="{% static 'images/home.png' %}">
+                <span class="nav_name">Home</span>
+            </a>
+            <a href="{% url 'medicines' %}" class="nav_link">
+              <img class="icon icon-med" src="{% static 'images/med.png' %}">
+              <span class="nav_name">Medicines</span>
+            </a>
+            <!-- <a href="#" class="nav_link">
+              <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
+              <span class="nav_name">Notifications</span>
+            </a> -->
+            <a href="{% url 'foodrecom' %}" class="nav_link">
+              <img class="icon icon-food" src="{% static 'images/food.png' %}">
+              <span class="nav_name">Food Recommender</span>
+            </a>
+            <a href="#" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Analytics</span>
+            </a>
+            <a href="{% url 'gettype' %}" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Get your type</span>
+            </a>
+
+            <a href="{% url 'gamification' %}" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Games</span>
+            </a>
+            <a href="{% url 'bmi' %}" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Get your BMI</span>
+            </a>
+            <a href="#" class="nav_link">
+              <img class="icon icon-user" src="{% static 'images/user.png' %}">
+              <span class="nav_name">Profile</span>
+            </a>
+
+          </div>
+      </div>
+  </nav>
+</div>
+<div class="row" style="padding:5px;">
+  <div class="col-md-1">
+    <button class="btn btn-dark"style="background-color: black" onclick="move(); points()"><a id="myLink" href="{% url 'infogame2' %}" target="game-frame">Done</a></button>  
+  </div>
+  <div class="col-md-11">
+    <div id="myProgress">
+      <div id="myBar"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <iframe id="game-frame" name="game-frame" src="{% url 'infogame1' %}" ></iframe>
+</div>
+<script>
+function points(){
+  setTimeout(function(){Swal.fire({
+            title: 'Correct Answer',
+  showClass: {
+    popup: 'animate__animated animate__fadeInDown'
+  },
+  hideClass: {
+    popup: 'animate__animated animate__fadeOutUp'
+  },
+  icon: 'success',
+  title:'30 points unlocked', 
+  confirmButtonText: '<a href="{% url `gamehome` %}" style="color: white; text-decoration: none">Next</a>'     
+            })
+},1200)}
+ var widthValue = 0;
+
+function move() {
+  var elem = document.getElementById("myBar");
+  var widthAnim = widthValue;
+  var id = setInterval(frame, 10);
+  var widthIncrement = 100;
+
+  widthValue = widthAnim + widthIncrement;
+
+  function frame() {
+    if (widthAnim >= widthValue || widthValue > 100) {
+      clearInterval(id);
+    } else {
+      widthAnim++;
+      elem.style.width = widthAnim + '%';
+      elem.innerHTML = widthAnim * 1 + '%';
+    }
+  }
+}
+</script>
+</body>
+</html>

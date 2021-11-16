@@ -14,6 +14,7 @@ urlpatterns = [
     path('profile/', views.profile,name='profile'),
     path('foodrecom/', views.foodrecom,name='foodrecom'),
     path('result/', views.result,name='result'),
+    path('finance/', views.result,name='finance'),
     path('bmi/', views.bmi,name='bmi'),
     path('bmiresult/', views.bmiresult,name='bmiresult'),
     path('gettype/', views.gettype,name='gettype'),    
@@ -22,7 +23,13 @@ urlpatterns = [
     path('medicine-edit/<int:pk>/', TaskUpdate.as_view(),name='medicine-edit'),
     path('medicine-delete/<int:pk>/', TaskDelete.as_view(),name='medicine-delete'),
     path('medicine-create/',TaskCreate.as_view(),name='medicine-create'),
-    
-    
+    path('gamification/', views.gamification,name='gamification'),
+    path('infogame/', views.infogame,name='infogame'),
+    path('infogame1/', views.infogame1,name='infogame1'),
+    path('infogame2/', views.infogame2,name='infogame2'),
+    path('infogame3/', views.infogame3,name='infogame3'),
+    path('videos/', views.videos,name='videos'),
    
 ]
+
+# infogame1
