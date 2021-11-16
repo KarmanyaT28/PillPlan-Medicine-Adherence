@@ -128,8 +128,7 @@ class Medicine(models.Model):
     description = models.TextField(null=True,blank=True)
     complete = models.BooleanField(default=False)
     posted = models.DateTimeField(auto_now_add=True)
-
-
+    
     drug_type = models.CharField(verbose_name='drug type' , max_length=50, null=True,blank=True)
     drug_qty = models.IntegerField(verbose_name='drug qty' , null=True,blank=True)
     start_date = models.DateField(default=timezone.now, null=True)

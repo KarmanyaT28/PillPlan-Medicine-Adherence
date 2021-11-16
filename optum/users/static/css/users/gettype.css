@@ -1,10 +1,93 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
-
-body{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Poppins', sans-serif; */
+    font-weight: 800;
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    background: #dde1e7;
+  }
+  
+  .login-div {
+    width: 700px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 8px 8px 10px #cbced1, -8px -8px 10px #ffffff;
+  }
+  
+  button {
+    margin: 25px 0 0 0;
+    width: 150px;
+    height: 50px;
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+    background: #dde1e7;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px #babecc, -5px -5px 10px #ffffff73;
+  }
+  
+  button:focus {
+    color: #3498db;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
+  }
+  
+  label {
+    position: relative;
+  }
+  
+  label input {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+  
+  label .fa {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: #091921;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 4px;
+    color: #6f6f6f;
+    font-size: 16px;
+    border-radius: 50%;
+    box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.1),
+      2px 2px 6px rgba(0, 0, 0, 0.8);
+  }
+  
+  label .fa:hover {
+    box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.1),
+      2px 2px 6px rgba(0, 0, 0, 0.8),
+      inset -2px -2px 10px rgba(255, 255, 255, 0.05),
+      inset 2px 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  label input:checked ~ .fa {
+    color: #00fff1;
+    box-shadow: inset -2px -2px 10px rgba(255, 255, 255, 0.05),
+      inset 2px 2px 10px rgba(0, 0, 0, 1);
+    text-shadow: 0 0 5px #00fff1, 0 0 20px #00fff1;
+  }
+  
+  body{
     background-color: rgba(28, 180, 125, 0.8);
-    color:white;
-    overflow: hidden;
-}
+  }
 :root {
     --header-height: 3rem;
     --nav-width: 60px;
@@ -155,15 +238,6 @@ ul {
     text-decoration: none;
   }
   
-  li a.active {
-    background-color: #8610b1;
-    color: white;
-  }
-  
-  li a:hover:not(.active) {
-    background-color: rgb(182, 136, 202);
-    color: white;
-  }
 
 .logo{
     height: 50px;
@@ -171,89 +245,10 @@ ul {
     margin-left: -30px;
 }
 
-.col-sm-3{
-    background-color:white; 
-    color: #002468;
-    padding: 20px;
-    left:50px;
-    height: 100vh;
-    padding-left: 40px;
-}
-
-.col-sm-3 #name{
-    padding-left: 40px;
-}
 
 .icon{
     height: 22px;
     width: 22px;
 }
 
-.user-img{
-    border: 5px solid #FFFFFF;
-    border-radius:50%;
-}
 
-.col-md-5{
-    padding: 30px;
-    width: 100px;
-}
-
-.upper-section{
-    margin-bottom: 10px;
-}
-.lower-section{
-    background-color: #FFFFFF;
-    height: 50.25vh; 
-    width: 71vw; 
-    margin: 10px;
-    color: #002468;
-    padding: 10px;
-}
-
-.btn{
-    background-color:rgba(28, 180, 125, 0.8);
-    border: none;
-}
-
-.medicine-list li{
-    background-color:white;
-    color: #002468;
-    border-radius: 10px;
-    margin: 4px;
-    padding: 2px;
-}
-
-.progress {
-    background: #04242F;
-    justify-content: flex-start;
-    border-radius: 100px;
-    align-items: center;
-    position: relative;
-    padding: 0 3px;
-    display: flex;
-    height: 20px;
-    width: 500px;
-    margin-top:16px;
-  }
-  
-  .progress-value {
-    animation: load 3s normal forwards;
-    box-shadow: 0 10px 40px -10px #fff;
-    border-radius: 100px;
-    background: rgb(255, 187, 0);
-    height: 16px;
-    width: 0;
-  }
-  
-  @keyframes load {
-    0% { width: 0; }
-    100% { width: 70%; }
-  }
-
-.nav-link{
-    font-size: 20px;
-    color: white;
-    margin-left: 10px;
-    text-decoration: none;
-}  

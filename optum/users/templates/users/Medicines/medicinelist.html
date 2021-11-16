@@ -20,13 +20,50 @@
     </tr>
     {% for medicine in medicines %}
     <tr>
+        {% if medicine.title == 'captopril' or medicine.title == 'fosinopril'%}
         <td>{{ medicine.title }}</td>
+        <td>Foods to avoid: Bananas</td>
         <td><a href= "{% url 'medicine' medicine.id %}">View</a></td>
         <td><a href= "{% url 'medicine-edit' medicine.id %}">Edit</a></td>
         <td><a href= "{% url 'medicine-delete' medicine.id %}">Delete</a></td>
+        {% elif medicine.title == 'New Medicine' %}
+        <td>{{ medicine.title }}</td>
+        <td>Expiry Date of New Medicine: </td>
+        <td><a href= "{% url 'medicine' medicine.id %}">View</a></td>
+        <td><a href= "{% url 'medicine-edit' medicine.id %}">Edit</a></td>
+        <td><a href= "{% url 'medicine-delete' medicine.id %}">Delete</a></td>
+        {% else %}
+        <td>{{ medicine.title }}</td>
+        <td>Expiry Date of New Medicine: </td>
+        <td><a href= "{% url 'medicine' medicine.id %}">View</a></td>
+        <td><a href= "{% url 'medicine-edit' medicine.id %}">Edit</a></td>
+        <td><a href= "{% url 'medicine-delete' medicine.id %}">Delete</a></td>
+        {% endif %}
     </tr>
     {% empty  %}
         <h3>No medicines for today</h3>
 
     {% endfor %}
 </table>
+
+
+
+  <!-- <tr>
+    <td>{{ med.title }}</td>
+    <td>
+      {% ifequal 'Saridon' med.title %}
+        Just now!
+      {% endifequal %}
+    </td>
+  </tr> -->
+  <!-- {% for med in medicines %}
+    {% if med.title == 'Saridon' %}
+        {{ med.title }} Do This
+    {% elif med.title == 'New Medicine' %}
+        {{ med.title }} Do something 
+    {% else %}
+        {{ med.title }} Do something else 
+    {% endif %}
+
+{% endfor %} -->
+

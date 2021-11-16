@@ -1,9 +1,273 @@
-<h1>Welcome to your Profile</h1>
+<!-- <h1>Welcome to your Profile</h1>
 
 
 <span>Hello , {{request.user}}</span>
 
-<span><a href="{% url 'logout' %}">Logout</a></span>
+<span><a href="{% url 'logout' %}">Logout</a></span> -->
 
 
-
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'css/users/profile.css' %}">
+    <link rel="stylesheet" href="meds.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container-fluid">
+        <img class="logo" src="{% static 'images/logo.png' %}">
+        <a style="color: white; margin-left: 20px;" href="{% url 'bmi' %}">BMI Calculator</a>
+        <a style="color: white; margin-left: 10px;" href="{% url 'gettype' %}">Adherence Type</a>
+      
+        <div class="nav-item dropdown" style="float: right;margin-right:20px">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+    </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
+                <div class="nav_list">
+                    <a href="{% url 'dashboard' %}" class="nav_link active">
+                        <img class="icon icon-home" src="{% static 'images/home.png' %}">
+                        <span class="nav_name">Home</span>
+                    </a>
+                    <a href="{% url 'medicines' %}" class="nav_link">
+                      <img class="icon icon-med" src="{% static 'images/med.png' %}">
+                      <span class="nav_name">Medicines</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                      <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
+                      <span class="nav_name">Notifications</span>
+                    </a>
+                    <a href="{% url 'foodrecom' %}" class="nav_link">
+                      <img class="icon icon-food" src="{% static 'images/food.png' %}">
+                      <span class="nav_name">Food Recommender</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                      <span class="nav_name">Analytics</span>
+                    </a>
+                    <a href="{% url 'gameboard' %}" class="nav_link">
+                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                      <span class="nav_name">Gameboard</span>
+                    </a>
+      
+                    <a href="{% url 'gamification' %}" class="nav_link">
+                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                      <span class="nav_name">Games</span>
+                    </a>
+                    <!-- <a href="{% url 'bmi' %}" class="nav_link">
+                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                      <span class="nav_name">Get your BMI</span>
+                    </a> -->
+                    <a href="#" class="nav_link">
+                      <img class="icon icon-user" src="{% static 'images/user.png' %}">
+                      <span class="nav_name">Profile</span>
+                    </a>
+      
+                    
+      
+                </div>
+            </div>
+        </nav>
+      </div>
+    <div id="mainbody">
+        <ul  class="nav nav-tabs sm-tabs" id="myTabMD" role="tablist" style="display: inline">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab-md" data-toggle="tab" href="#home-md" role="tab" aria-controls="home-md"
+                   aria-selected="true">Personal Information</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab-md" data-toggle="tab" href="#profile-md" role="tab" aria-controls="profile-md"
+                   aria-selected="false">Medical Information</a>
+            </li>
+        </ul ><br>
+        </div>
+        <div class="tab-content card pt-5" id="myTabContentMD">
+            <div class="tab-pane fade show active" id="home-md" role="tabpanel" aria-labelledby="home-tab-md">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title" style="color: #002468;">Edit Profile</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="post">
+                                            <div class="row">
+                                                <div class="col-md-5 pr-1">
+                                                    <div class="form-group">
+                                                        <label>User Id (disabled)</label>
+                                                        <input type="text" class="form-control" disabled="" placeholder="User Id" value="{{ user.id }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-1">
+                                                    <div class="form-group">
+                                                        <label>Phone No.</label>
+                                                        <input type="text" class="form-control" placeholder="Pnone No." name="phnno" value="{{ user.phone }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 pl-1">
+                                                    <div class="form-group">
+                                                        <label >Email address</label>
+                                                        <input type="email" class="form-control" disabled="" placeholder="Email" value="{{ user.email }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 pr-1">
+                                                    <div class="form-group">
+                                                        <label>First Name</label>
+                                                        <input type="text" class="form-control" disabled="" placeholder="Company" value="{{ user.first_name }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 pl-1">
+                                                    <div class="form-group">
+                                                        <label>Last Name</label>
+                                                        <input type="text" class="form-control" disabled="" placeholder="Last Name" value="{{ user.last_name }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <input type="text" class="form-control" placeholder="Home Address" name="addr" value="Surat">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 pr-1">
+                                                    <div class="form-group">
+                                                        <label>City</label>
+                                                        <input type="text" class="form-control" placeholder="City" name="city" value="Surat">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 px-1">
+                                                    <div class="form-group">
+                                                        <label>Country</label>
+                                                        <input type="text" class="form-control" placeholder="Country" name="country" value="India">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 pl-1">
+                                                    <div class="form-group">
+                                                        <label>Postal Code</label>
+                                                        <input type="number" class="form-control" placeholder="ZIP Code" name="zipcode" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input name="update" type="submit" class="btn btn-outline-danger pull-right" value="Update Profile">
+                                            <div class="clearfix"></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card card-user">
+                                    <div class="card-header">
+                                        <h4 class="card-title" style="color: #002468;">Change Password</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="post">
+                                            <label>Current Password</label>
+                                            <input type="password" name="pwd" class="form-control" placeholder="Current Password" value="<?php echo $pwd?>"><br>
+                                            <label>New Password</label>
+                                            <input type="password" name="newpwd" class="form-control" placeholder="New Password" value=""><br>
+                                            <label>Confirm Password</label>
+                                            <input type="password" name="confirm_newpwd" class="form-control" placeholder="Confirm Password" value=""><br>
+                                            <input name="change" type="submit" class="btn btn-outline-danger pull-right" value="Change Password">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Medical History</h4>
+                            </div>
+                            <div class="card-body">
+                                <form method="post">
+                                    <div class="row">
+                                        <div class="col-md-5 pr-1">
+                                            <div class="form-group">
+                                                <label>Ongoing Medicines</label>
+                                                <input type="text" name="ongoing_meds" class="form-control" placeholder="Ongoing Medicines" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-1">
+                                            <div class="form-group">
+                                                <label>Any Medical Conditions</label>
+                                                <input type="text" name="med_condition" class="form-control" placeholder="Medical conditions" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 pl-1">
+                                            <div class="form-group">
+                                                <label >Medical Allergies</label>
+                                                <input type="test" name="allergies" class="form-control" placeholder="Medical allergies">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 pr-1">
+                                            <div class="form-group">
+                                                <label>Age</label>
+                                                <input type="text" name="age" class="form-control" placeholder="Age" value="{{ user.age }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pl-1">
+                                            <div class="form-group">
+                                                <label>Weight</label>
+                                                <input type="text" name="weight" class="form-control" placeholder="Weight" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Height</label>
+                                                <input type="text" name="height" class="form-control" placeholder="Height" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pr-1">
+                                            <div class="form-group">
+                                                <label>Blood Group</label>
+                                                <input type="text" name="blood_grp" class="form-control" placeholder="Blood Group" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="submit" name="submit" class="btn btn-outline-danger pull-right" value="Update">
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+</html>
