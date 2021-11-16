@@ -203,7 +203,7 @@ ul {
     margin-bottom: 10px;
 }
 .lower-section{
-    background-color: white; 
+    background-color: #FFFFFF;
     height: 50.25vh; 
     width: 71vw; 
     margin: 10px;
@@ -215,3 +215,38 @@ ul {
     background-color:rgba(28, 180, 125, 0.8);
     border: none;
 }
+
+.medicine-list li{
+    background-color:white;
+    color: #002468;
+    border-radius: 10px;
+    margin: 4px;
+    padding: 2px;
+}
+
+.progress {
+    background: #04242F;
+    justify-content: flex-start;
+    border-radius: 100px;
+    align-items: center;
+    position: relative;
+    padding: 0 3px;
+    display: flex;
+    height: 20px;
+    width: 500px;
+    margin-top:16px;
+  }
+  
+  .progress-value {
+    animation: load 3s normal forwards;
+    box-shadow: 0 10px 40px -10px #fff;
+    border-radius: 100px;
+    background: rgb(255, 187, 0);
+    height: 16px;
+    width: 0;
+  }
+  
+  @keyframes load {
+    0% { width: 0; }
+    100% { width: 70%; }
+  }

@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Info Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <style>
+body {
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px;
+    color: #002468;
+}
+#kitchen {
+    background-image: url("{% static 'images/kitchen.png' %}");
+    background-color: rgb(208, 248, 133);
+    background-size: 250px 250px;
+    height: 250px;  
+    width: 250px;
+    border: none;
+    border: 5px solid rgb(148, 16, 7);
+    border-radius:10px;
+}
+#bathroom {
+    background-image: url("{% static 'images/bathroom.png' %}");
+    background-size: 250px 250px;
+    background-color: rgb(133, 212, 248);
+    height: 250px;  
+    width: 250px;
+    border: none;
+    border: 5px solid rgb(65, 3, 44);
+    border-radius:10px;
+}
+#shelf {
+    background-image: url("{% static 'images/shelf.png' %}");
+    background-size: 250px 250px;
+    background-color: rgb(250, 181, 233);
+    height: 250px;  
+    width: 250px;
+    border: none;
+    border: 5px solid rgb(3, 53, 65);
+    border-radius:10px;
+}
+#fridge {
+    background-image: url("{% static 'images/fridge.png' %}");
+    background-size: 250px 250px;
+    background-color: rgb(240, 222, 140);
+    height: 250px;  
+    width: 250px;
+    border: none;
+    border: 5px solid rgb(30, 3, 65);
+    border-radius:10px;
+}
+#img-btn {
+    /* background-image: url("img/med2.png"); */
+    /* background-size: 400px 300px; */
+    height: 250px;  
+    width: 220px;
+    margin-left: 50px;
+    border: none;
+    background-color: transparent;
+    float: right;
+}
+.bathroom-container{
+    margin-top:200px;
+}
+.kitchen-container{
+    margin-left: 200px;
+}
+    </style>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-md-3">
+                <h4>Bathroom Cabinet</h4>
+                <button id="bathroom" onclick="wrong()"></button>
+            </div>
+            <div class="col-md-3">
+                <h4>Kitchen Cabinet</h4>
+                <button id="kitchen" onclick="wrong()"></button>
+            </div>
+            <div class="col-md-3">
+                <h4>Shelf</h4>
+                <button id="shelf" onclick="right()"></button>
+            </div>
+            <div class="col-md-3">
+                <h4>On Refrigerator Top</h4>
+                <button id="fridge" onclick="wrong()"></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="margin-top: 50px">
+                <p>*Click on the proper box and earn 10 points</p>
+            </div>
+            <div class="col-md-3">
+                <img id="img-btn" src="{% static 'images/med2.png' %}">
+            </div>
+            <div class="col-md-5" style="margin-top: 50px">
+                <h3>Select the proper place to store your medicines</h3>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        function wrong() {
+            Swal.fire({
+                icon: 'info',
+                html: 'KPills and capsules are easily damaged by heat and moisture. Aspirin pills break down into vinegar and salicylic acid. This irritates the stomach.<br>'+
+                '<b>Wrong Answer. Try Again!</b>'
+            })
+            
+        }
+        function right() {
+            Swal.fire({
+            title: 'Correct Answer',
+  showClass: {
+    popup: 'animate__animated animate__fadeInDown'
+  },
+  hideClass: {
+    popup: 'animate__animated animate__fadeOutUp'
+  },
+            imageUrl: "{% static 'images/+10.gif' %}",
+            imageHeight: 300,
+            imgaeWidth:300,
+            imageAlt: 'A tall image',
+            confirmButtonText: '<a href="{% url `infogame3` %}" target="game-frame" style="color: white; text-decoration: none">Next</a>'
+            })
+            
+        }
+    </script>
+</html>

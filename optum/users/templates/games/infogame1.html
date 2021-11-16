@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Info Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <style>
+body {
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px;
+    color: #002468;
+}
+#bg-img-light {
+    background-image: url("{% static 'images/light2.gif' %}");
+    background-size: 450px 500px;
+    background-repeat: no-repeat;
+    height: 450px;  
+    width: 350px;
+    border: none;
+    background-color: transparent;
+    border: 5px solid rgb(252, 185, 3);
+    border-radius:10px;
+}
+#bg-img-dark {
+    background-image: url("{% static 'images/dark2.png' %}");
+    background-size: 450px 500px;
+    background-repeat: no-repeat;
+    height: 450px;  
+    width: 350px;
+    border: none;
+    background-color: transparent;
+    border: 5px solid rgb(39, 12, 39);
+    border-radius:10px;
+}
+#img-btn {
+    /* background-image: url("img/med2.png"); */
+    /* background-size: 400px 300px; */
+    height: 400px;  
+    width: 360px;
+    margin-left: 50px;
+    border: none;
+    background-color: transparent;
+}
+
+    </style>
+    </head>
+    <body>
+        <div class="row">
+                <div class="col-md-4">
+                    <h3>In dark storage</h3><br>
+                    <button id="bg-img-dark" onclick="right()"></button>
+                    <!-- <div class="badge">
+                        <div class="badge__label">+10</div>
+                     </div> -->
+                </div>
+                <div class="col-md-4 justify-content-center" style="margin-top: 50px;">
+                    <h3>Store medicine in the correct place</h3>
+                    <img id="img-btn" src="{% static 'images/med2.png' %}">
+                    <p>*Click on the correct place to earn +10 points</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>In sunlight</h3><br>
+                    <button id="bg-img-light" onclick="wrong()"></button>
+                </div>
+            </div>
+    </body>
+    <script type="text/javascript">
+        function wrong() {
+            Swal.fire({
+                icon: 'info',
+                html: 'Know that heat, air, light, and moisture may damage your medicine.'+
+                'Store your medicines in a cool, dry place.<br>'+
+                '<b>Wrong Answer. Try Again!</b>'
+            })
+            
+        }
+        function right() {
+            Swal.fire({
+            title: 'Correct Answer',
+  showClass: {
+    popup: 'animate__animated animate__fadeInDown'
+  },
+  hideClass: {
+    popup: 'animate__animated animate__fadeOutUp'
+  },
+            imageUrl: "{% static 'images/+10.gif' %}",
+            imageHeight: 300,
+            imgaeWidth:300,
+            imageAlt: 'A tall image',
+            confirmButtonText: '<a href="{% url `infogame2` %}" target="game-frame" style="color: white; text-decoration: none">Next</a>'
+            })
+            
+        }
+    </script>
+</html>

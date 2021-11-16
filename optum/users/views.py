@@ -101,7 +101,7 @@ def foodrecom(request):
 
 @login_required(login_url = 'login')
 def result(request):
-    classifier = joblib.load("D:/django/Optum-Stratethon/finalized_usertype.sav")
+    classifier = joblib.load("C:/Users/Joyeeta/Desktop/sem 5/optum/PillPlan-Medicine-Adherence-main/PillPlan-Medicine-Adherence-main/finalized_usertype.sav")
     lis = []
 
     lis.append(request.GET['q1'])
@@ -115,12 +115,14 @@ def result(request):
     lis.append(request.GET['q9'])
     lis.append(request.GET['q10'])
 
+    if(request.GET['q9']==1):
+        return render(request,'users/dashboard.html')
+    else:
+        ans = classifier.predict([lis])
 
-    print(lis)
+        return render(request,'users/result.html',{'ans':ans})
 
-    ans = classifier.predict([lis])
-
-    return render(request,'users/result.html',{'ans':ans})
+    # print(lis)
 
 
 
@@ -150,7 +152,7 @@ import numpy as np
 def bmiresult(request):
 
 
-    clsf = joblib.load("D:/django/Optum-Stratethon/bmi.sav")
+    clsf = joblib.load("C:/Users/Joyeeta/Desktop/sem 5/optum/PillPlan-Medicine-Adherence-main/PillPlan-Medicine-Adherence-main/bmi.sav")
     # lis = []
 
     # lis.append(request.GET['height'])
@@ -208,7 +210,7 @@ class TaskList(LoginRequiredMixin,ListView):
     model = Medicine
     context_object_name = 'medicines'
     template_name = "users/Medicines/medicinelist.html"
-    
+
 
 
     def get_context_data(self, **kwargs):
@@ -258,3 +260,26 @@ class TaskDelete(LoginRequiredMixin,DeleteView):
 
 # @login_required(login_url = 'login')
 
+@login_required(login_url = 'login')
+def gamification(request):
+    return render(request,'games/gamehome.html')
+
+@login_required(login_url = 'login')
+def infogame(request):
+    return render(request,'games/infogame.html')
+
+@login_required(login_url = 'login')
+def infogame1(request):
+    return render(request,'games/infogame1.html')
+
+@login_required(login_url = 'login')
+def infogame2(request):
+    return render(request,'games/infogame2.html')
+
+@login_required(login_url = 'login')
+def infogame3(request):
+    return render(request,'games/infogame3.html')
+
+@login_required(login_url = 'login')
+def videos(request):
+    return render(request,'games/videos.html')

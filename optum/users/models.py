@@ -132,7 +132,7 @@ class Medicine(models.Model):
 
     drug_type = models.CharField(verbose_name='drug type' , max_length=50, null=True,blank=True)
     drug_qty = models.IntegerField(verbose_name='drug qty' , null=True,blank=True)
-    start_date = models.DateTimeField(default=timezone.now, null=True)
+    start_date = models.DateField(default=timezone.now, null=True)
     end_date = models.DateTimeField(default=timezone.now, null=True)
     drug_frequency = models.IntegerField(verbose_name='drug_frequency' , null=True,blank=True)
     upload = models.ImageField(upload_to ='uploads/',null=True,blank=True)

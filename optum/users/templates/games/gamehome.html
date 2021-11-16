@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Playgames</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'css/users/dashboard.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <style>
+        * {
+  font-family: sans-serif;
+}
+
+.paths {
+  fill: none;
+  stroke: grey;
+  stroke-dasharray: 5;
+  stroke-width: 5;
+  stroke-linejoin: round;
+}
+    .container {
+        margin-top: 80px;
+        background: url("{% static 'images/bgrect.png' %}");
+        height: 550px;
+        width: 1200px;
+        padding: 10px;
+        border-radius: 5px;;
+    }
+.col-md-3{
+    margin-top: 130px;
+}
+.btn-danger{
+    font-size: 16px;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+    <!-- <img class="logo" src="{% static 'images/logo.png' %}"> -->
+<header class="header" id="header">
+    <div class="nav-item dropdown" style="float: right;margin-right:20px">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+            <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+</header>
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+      <div>
+        <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
+        <div class="nav_list">
+            <a href="/" class="nav_link active">
+                <img class="icon icon-home" src="{% static 'images/home.png' %}">
+                <span class="nav_name">Home</span>
+            </a>
+            <a href="{% url 'medicines' %}" class="nav_link">
+              <img class="icon icon-med" src="{% static 'images/med.png' %}">
+              <span class="nav_name">Medicines</span>
+            </a>
+            <!-- <a href="#" class="nav_link">
+              <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
+              <span class="nav_name">Notifications</span>
+            </a> -->
+            <a href="{% url 'foodrecom' %}" class="nav_link">
+              <img class="icon icon-food" src="{% static 'images/food.png' %}">
+              <span class="nav_name">Food Recommender</span>
+            </a>
+            <a href="#" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Analytics</span>
+            </a>
+            <a href="{% url 'gettype' %}" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Get your type</span>
+            </a>
+
+            <a href="{% url 'gamification' %}" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Games</span>
+            </a>
+            <a href="{% url 'bmi' %}" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Get your BMI</span>
+            </a>
+            <a href="#" class="nav_link">
+              <img class="icon icon-user" src="{% static 'images/user.png' %}">
+              <span class="nav_name">Profile</span>
+            </a>
+
+          </div>
+      </div>
+  </nav>
+</div>
+<div class="container">
+    <h2>Play Games and Earn Points</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <img class="game-img" src="{% static 'images/pacman.png' %}" height= "250px" width= "250px">
+        </div>
+        <div class="col-md-3 justify-content-center">
+            <button type="button" class="btn btn-danger" ><a href="{% url 'infogame' %}">Medicine Storage 30 points</a></button>
+            <img class="game-img" src="{% static 'images/pills.png' %}" height= "250px" width= "250px">
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-danger"><a href="{% url 'videos' %}">Medical Equipments 100 points</a></button>
+            <img class="game-img" src="{% static 'images/equip.png' %}" height= "250px" width= "250px">
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-danger">Health and Exercise 50 points</button>
+            <img class="game-img" src="{% static 'images/exercise.png' %}" height= "250px" width= "250px">
+        </div>
+    </div>
+</div>
+</body>
+</html>
