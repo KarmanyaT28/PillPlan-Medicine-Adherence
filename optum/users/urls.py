@@ -29,6 +29,9 @@ urlpatterns = [
     path('infogame2/', views.infogame2,name='infogame2'),
     path('infogame3/', views.infogame3,name='infogame3'),
     path('videos/', views.videos,name='videos'),
+    path('gameboard/', views.gameboard,name='gameboard'),
+    path('usertype_un/', views.usertype_un,name='usertype_un'),
+    path('financeinfo/', views.financeinfo,name='financeinfo'),
    
 ]
 

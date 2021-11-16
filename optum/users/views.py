@@ -83,11 +83,14 @@ def logoutUser(request):
     logout(request)
     return redirect('landing')
 
-
+# ----------------------------------------------------------------
 @login_required(login_url = 'login')
 def dashboard(request):
-    return render(request,'users/dashboard.html')
+    log_user = request.user
+    med_list = Medicine.objects.filter(user=log_user)
+    return render(request,'users/dashboard.html',{'med_list':med_list})
 
+#-----------------------------------------------------------------
 
 @login_required(login_url = 'login')
 def profile(request):
@@ -99,9 +102,10 @@ def foodrecom(request):
     # form = show_entry_fields()
     return render(request,'users/foodrecom.html',{'form':form})
 
+
 @login_required(login_url = 'login')
 def result(request):
-    classifier = joblib.load("C:/Users/Joyeeta/Desktop/sem 5/optum/PillPlan-Medicine-Adherence-main/PillPlan-Medicine-Adherence-main/finalized_usertype.sav")
+    classifier = joblib.load("C:/Users/Joyeeta/Desktop/PillPlan-Medicine-Adherence/finalized_usertype.sav")
     lis = []
 
     lis.append(request.GET['q1'])
@@ -115,21 +119,26 @@ def result(request):
     lis.append(request.GET['q9'])
     lis.append(request.GET['q10'])
 
-    if(request.GET['q9']==1):
-        return render(request,'users/dashboard.html')
+    ans = classifier.predict([lis])
+
+    if(ans[0]=='nun'):
+        return redirect('usertype_un')
+    elif(ans[0]=='adh'):
+        return redirect('gamification')
     else:
-        ans = classifier.predict([lis])
-
-        return render(request,'users/result.html',{'ans':ans})
-
-    # print(lis)
-
+        return redirect('dashboard')
 
 
 @login_required(login_url = 'login')
 def gettype(request):
     return render(request,'users/gettype.html')
 
+
+@login_required(login_url = 'login')
+def financeinfo(request):
+    return render(request,'users/financeinfo.html')
+
+    
 
 
 #----------------------------------------------------------------------------------------
@@ -152,7 +161,7 @@ import numpy as np
 def bmiresult(request):
 
 
-    clsf = joblib.load("C:/Users/Joyeeta/Desktop/sem 5/optum/PillPlan-Medicine-Adherence-main/PillPlan-Medicine-Adherence-main/bmi.sav")
+    clsf = joblib.load("bmi.sav")
     # lis = []
 
     # lis.append(request.GET['height'])
@@ -205,23 +214,22 @@ def bmiresult(request):
 # def medicineList(request):
 #     return render(request,'users/medicinelist.html')
 
+# def dashboard(request):
+#     log_user = request.user
+#     med_list = Medicine.objects.filter(user=log_user)
+#     return render(request,'users/dashboard.html',{'med_list':med_list})
 
 class TaskList(LoginRequiredMixin,ListView):
     model = Medicine
     context_object_name = 'medicines'
     template_name = "users/Medicines/medicinelist.html"
-
-
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['medicines'] = context['medicines'].filter(user=self.request.user)
         context['count'] = context['medicines'].filter(complete=False).count()
         return context
-
-
-
-
 
 class TaskDetail(LoginRequiredMixin,DetailView):
     model = Medicine
@@ -283,3 +291,12 @@ def infogame3(request):
 @login_required(login_url = 'login')
 def videos(request):
     return render(request,'games/videos.html')
+
+@login_required(login_url = 'login')
+def gameboard(request):
+    user_list = MyUser.objects.all()
+    return render(request,'users/gameboard.html',{'user_list':user_list})
+
+@login_required(login_url = 'login')
+def usertype_un(request):
+    return render(request,'users/usertype_un.html')

@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Analytics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/users/gameboard.css' %}">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+      window.onload = function () {
+        CanvasJS.addColorSet("greenShades",
+                [//colorSet Array
+
+                "#2F4F4F",
+                "#008080",
+                "#2E8B57",
+                "#3CB371",
+                "#90EE90"                
+                ]);
+      var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        animationDuration: 3000,
+        colorSet: "greenShades", // "light1", "light2", "dark1", "dark2"
+        title:{
+          text: "Your Progress"
+        },
+        axisY: {
+          title: "Points Earned"
+        },
+        data: [{        
+          type: "column",  
+          showInLegend: true, 
+          legendMarkerColor: "grey",
+          legendText: "Days of the week",
+          dataPoints: [    
+          { y: 30,  label: "Sunday" }, 
+          { y: 35,  label: "Monday" },
+            { y: -20,  label: "Tuesday" },
+            { y: 40,  label: "Wednesday" },
+            { y: 50,  label: "Thursday" },
+            { y: -10, label: "Friday" },
+            { y: 10,  label: "Saturday" },
+          ]
+        }]
+      });
+      chart.render();
+      
+      }
+      </script>
+      
+</head>
+<body>
+<header class="header" id="header">
+    <div class="container-fluid">
+        <img class="logo" src="{% static 'images/logo.png' %}">
+        <a style="color: white; margin-left: 20px;" href="{% url 'bmi' %}">BMI Calculator</a>
+        <a style="color: white; margin-left: 10px;" href="{% url 'gettype' %}">Adherence Type</a>
+      
+        <div class="nav-item dropdown" style="float: right;margin-right:20px">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+      <div>
+        <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
+        <div class="nav_list">
+            <a href="{% url 'dashboard' %}" class="nav_link active">
+                <img class="icon icon-home" src="{% static 'images/home.png' %}">
+                <span class="nav_name">Home</span>
+            </a>
+            <a href="{% url 'medicines' %}" class="nav_link">
+              <img class="icon icon-med" src="{% static 'images/med.png' %}">
+              <span class="nav_name">Medicines</span>
+            </a>
+            <a href="#" class="nav_link">
+              <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
+              <span class="nav_name">Notifications</span>
+            </a>
+            <a href="{% url 'foodrecom' %}" class="nav_link">
+              <img class="icon icon-food" src="{% static 'images/food.png' %}">
+              <span class="nav_name">Food Recommender</span>
+            </a>
+            <a href="#" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Analytics</span>
+            </a>
+            <!-- <a href="{% url 'gettype' %}" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Get your type</span>
+            </a> -->
+
+            <a href="{% url 'gamification' %}" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Games</span>
+            </a>
+            <!-- <a href="{% url 'bmi' %}" class="nav_link">
+              <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+              <span class="nav_name">Get your BMI</span>
+            </a> -->
+            <a href="#" class="nav_link">
+              <img class="icon icon-user" src="{% static 'images/user.png' %}">
+              <span class="nav_name">Profile</span>
+            </a>
+
+          </div>
+      </div>
+  </nav>
+</div>
+<div class="row">
+    <div class="col-sm-9 justify-content-center">
+        <!-- <div class="tab-bar">
+            <button class="btn btn-dark" onclick="openCity('Games')">🎮 GameBoard</button>
+            <button class="btn btn-dark" onclick="openCity('Medicines')">🩺 MedBoard</button>
+          </div> -->
+          
+          <div id="Games" class="w3-container city">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card" id="points">
+                                <!-- <div class="card-title">Level 4</div> -->
+                                <div class="progress blue">
+                                    <span class="progress-left">
+                                        <span class="progress-bar"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                        <span class="progress-bar"></span>
+                                    </span>
+                                    <div class="progress-value">Lvl 4 : 40%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card" id="points">
+                                <!-- <div class="card-title">50 points to unlock</div> -->
+                                <div class="progress blue">
+                                    <span class="progress-left">
+                                        <span class="progress-bar2"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                        <span class="progress-bar2"></span>
+                                    </span>
+                                    <div class="progress-value">50 points</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card" id="chart">
+                                <div id="chartContainer" style="height: 280px; width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="card">
+                        <div class="card-body">
+                          <h4 class="card-title" style="color: black">🛍️Coupons unlocked</h4>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                </div>
+                                <div class="col-sm-6">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+          </div>
+          
+          <div id="Medicines" class="w3-container city" style="display:none">
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="card" style="color:#00455D; padding: 10px">
+                    <p>Doses taken this week: <b>11</b></p>
+                    <p>Total doses this week: <b>14</b></p>
+                    <p>Doses missed this week: <b>3</b></p>
+                    <p>Your Adherence percentage: <b>78.57</b></p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+  <div class="col-sm-3 justify-content-center">
+    <div class="card" id="leaderboard">
+        <div class="card-body">
+          <h5 class="card-title">🏆Karmanya Tyagi🏆</h5>
+          <p class="card-text">
+            🌟 354 points 🌟
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" style=" background-color: #00455D; color: white">Joyeeta Dey <b>210</b> points</li>
+            {% for user in user_list %}
+            <li class="list-group-item">{{user.first_name}} <b>{{ user.user_points }}</b> points</li>
+            <!-- {{ user_list }} -->
+            {%  endfor %}
+          </ul>
+      </div>
+  </div>
+</div>
+<script>
+    function openCity(cityName) {
+      var i;
+      var x = document.getElementsByClassName("city");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      document.getElementById(cityName).style.display = "block";  
+    }
+    </script>
+<script>
+</script>
+</body>
+</html>

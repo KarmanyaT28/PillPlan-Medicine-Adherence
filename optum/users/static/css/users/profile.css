@@ -3,8 +3,31 @@
 body{
     background-color: rgba(28, 180, 125, 0.8);
     color:white;
-    overflow: hidden;
+    
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #04242F; 
+    border-radius: 4px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00455D;
+    border-radius: 4px;
+  }
+
 :root {
     --header-height: 3rem;
     --nav-width: 60px;
@@ -194,16 +217,11 @@ ul {
     border-radius:50%;
 }
 
-.col-md-5{
-    padding: 30px;
-    width: 100px;
-}
-
 .upper-section{
     margin-bottom: 10px;
 }
 .lower-section{
-    background-color: #FFFFFF;
+    background-color: white; 
     height: 50.25vh; 
     width: 71vw; 
     margin: 10px;
@@ -216,44 +234,30 @@ ul {
     border: none;
 }
 
-.medicine-list li{
-    background-color:white;
-    color: #002468;
-    border-radius: 10px;
-    margin: 4px;
-    padding: 2px;
+#myTabMD{
+    background-color: #1DC7EA;
+}
+a{
+    font-size: 16px;
+    color: black;
+}
+a:hover{
+    color: white;
+}
+.swal-overlay {
+    background-color: #936cd4;
+}
+#mainbody{
+    padding: 20px;
+}
+#jumboheader{
+    background-color: #936cd4;
+    height:120px;
+    width: 100%;
+    padding: 20px;
+    color: black;
 }
 
-.progress {
-    background: #04242F;
-    justify-content: flex-start;
-    border-radius: 100px;
-    align-items: center;
-    position: relative;
-    padding: 0 3px;
-    display: flex;
-    height: 20px;
-    width: 500px;
-    margin-top:16px;
-  }
-  
-  .progress-value {
-    animation: load 3s normal forwards;
-    box-shadow: 0 10px 40px -10px #fff;
-    border-radius: 100px;
-    background: rgb(255, 187, 0);
-    height: 16px;
-    width: 0;
-  }
-  
-  @keyframes load {
-    0% { width: 0; }
-    100% { width: 70%; }
-  }
-
-.nav-link{
-    font-size: 20px;
-    color: white;
-    margin-left: 10px;
-    text-decoration: none;
-}  
+form{
+    color:#002468;
+}
