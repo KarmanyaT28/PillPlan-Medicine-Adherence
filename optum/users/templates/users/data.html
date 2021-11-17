@@ -4,7 +4,121 @@
 <html>
     <head>
         <title>Unintentional Usertype</title>
-         <link rel="stylesheet" href="{% static 'css/users/data.css' %}">
+         <!-- <link rel="stylesheet" href="{% static 'css/users/data.css' %}"> -->
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <style>
+             * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            }
+
+            body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #222;
+            min-height: 100vh;
+            }
+
+            .container {
+            position: relative;
+            width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 10px;
+            }
+
+            .container .card {
+            position: relative;
+            height: 300px;
+            background: #fff;
+            display: flex;
+            width: 47%;
+            margin: 30px 0;
+            }
+
+            .container .card .imgBx {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #dde1e7;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: 0.5s ease-in-out;
+            }
+
+            .container .card:hover .imgBx {
+            width: 150px;
+            height: 150px;
+            left: -75px;
+            top: calc(50% - 75px);
+            transition: 0.5s ease-in-out;
+            background: #ff0057;
+            }
+
+            .container .card .imgBx::before {
+            content: attr(data-text);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 6em;
+            color: #dde1e7;
+            font-weight: 700;
+            }
+
+            .container .card .imgBx img {
+            max-width: 450px;
+            transition: 0.5s ease-in-out;
+            }
+
+            .container .card:hover .imgBx img {
+            max-width: 75px;
+            }
+
+            .container .card .content {
+            position: absolute;
+            right: 0;
+            width: calc(100% - 75px);
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+
+            .container .card .content a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #333;
+            text-decoration: none;
+            color: #fff;
+            }
+
+            @media (max-width: 992px) {
+                .container {
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .container .card {
+                    width: 400px;
+                }
+            }
+
+         </style>
      </head>
      <body>
            <div class="container">

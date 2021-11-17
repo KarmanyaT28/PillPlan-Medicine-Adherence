@@ -197,7 +197,7 @@ ul {
 
 .tm-post-link-inner {
     overflow: hidden;
-    background: #3085a3;
+    background: #2aa887
 }
 
 .tm-post-link img {
@@ -300,7 +300,7 @@ ul {
 }
 
 .tm-external-link { color: rgba(28, 180, 125, 0.8);}
-.tm-external-link:hover { color: #09b6b6; }
+.tm-external-link:hover { color: #2aa887; }
 
 .tm-paging-wrapper {
     display: flex;

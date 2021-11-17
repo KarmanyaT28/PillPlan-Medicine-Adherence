@@ -56,12 +56,6 @@
         width: 250px;
         margin-left: 30px;
       }
-      /* .container{
-        background-color:white;
-        border-radius: 15px;
-        width: 1100px;
-        padding: 20px;
-      } */
       .col-md-4{
         text-align:center;
       }
@@ -84,11 +78,6 @@
           border:none;
           border-radius: 20px;
       }
-      /* td{
-        background-color:rgba(248, 104, 21, 0.356);
-        margin: 10px;
-        border-radius:10px;
-      } */
       .btn{
           font-size:14px;
       }
@@ -140,15 +129,10 @@
                       <img class="icon icon-analytics" src="{% static 'images/game.png' %}">
                       <span class="nav_name">Gameboard</span>
                     </a>
-      
                     <a href="{% url 'gamification' %}" class="nav_link">
                       <img class="icon icon-analytics" src="{% static 'images/dice.png' %}">
                       <span class="nav_name">Games</span>
                     </a>
-                    <!-- <a href="{% url 'bmi' %}" class="nav_link">
-                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
-                      <span class="nav_name">Get your BMI</span>
-                    </a> -->
                     <a href="#" class="nav_link">
                       <img class="icon icon-user" src="{% static 'images/user.png' %}">
                       <span class="nav_name">Profile</span>
@@ -181,20 +165,9 @@
       <h2 style="color: orangered">Morning</h2>
       <h5>5:00am to 12:00pm</h5><br>
       <img id="timing-img" src="{% static 'images/morning.png' %}">
-      
       <table class="table table-sm">
-        <!-- <tr>
-            <th>Medicines</th>
-            <th>Interaction</th>
-            <th>Actions</th>
-            
-        </tr> -->
         {% for medicine in medicines %}
-        <h3>You have <i>{{medicine.drug_time}}</i> medicines time</h3><br>
         <tr>
-          <!-- {% if medicine.drug_time == '18:00:00' %}
-          <h1>Morning</h1>
-          {% endif %} -->
 
           {% if medicine.title == 'captopril' or medicine.title == 'fosinopril' or medicine.title == 'enalapril' %}
           <td>{{ medicine.title }}</td>
@@ -253,7 +226,7 @@
             <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
             <a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger">Delete</a></td>
           {% else %}
-          <td>{{ medicine.title }}</td>
+          <td>{{ medicine.title }} <br> *4 days to refill </td>
           <td> No Interaction </td>
           <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
           <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td> -->
@@ -274,12 +247,7 @@
       <img id="timing-img" src="{% static 'images/noon.png' %}">
       
       <table class="table table-sm">
-        <!-- <tr>
-            <th>Medicines</th>
-            <th>Interaction</th>
-            <th>Actions</th>
-            
-        </tr> -->
+       
         {% for medicine in medicines %}
         <tr>
           {% if medicine.title == 'captopril' or medicine.title == 'fosinopril' or medicine.title == 'enalapril' %}
@@ -363,84 +331,13 @@
         <img id="timing-img" src="{% static 'images/evening.png' %}">
         
         <table class="table table-sm">
-          <!-- <tr>
-              <th>Medicines</th>
-              <th>Interaction</th>
-              <th>Actions</th>
-              
-          </tr> -->
-          {% for medicine in medicines %}
           <tr>
-            {% if medicine.title == 'captopril' or medicine.title == 'fosinopril' or medicine.title == 'enalapril' %}
-            <td>{{ medicine.title }}</td>
-            <td>Foods to avoid: Bananas</td>
+            <td>Saridon</td>
+            <td>No Interaction</td>
             <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
-            <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary">View</a> -->
-            <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
-            <td><a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-            {% elif medicine.title == 'morphine' or medicine.title == 'codeine' or medicine.title == 'paracetamol' or medicine.title == 'metronidazole' %}
-            <td>{{ medicine.title }}</td>
-            <td>Foods to avoid: Alcohol</td>
-            <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
-            <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary">View</a> -->
-              <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
-              <a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger">Delete</a></td>
-            {% elif medicine.title == 'Plendil' or medicine.title == 'Liptor' or medicine.title == 'Zocor' or medicine.title == 'quinine' or medicine.title == 'busopirone' or medicine.title == 'erythromycin' %}
-            <td>{{ medicine.title }}</td>
-            <td>Foods to avoid: GrapeFruit</td>
-            <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
-            <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary">View</a> -->
-              <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
-              <td><a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-            {% elif medicine.title == 'clozapine' %}
-            <td>{{ medicine.title }}</td>
-            <td>Foods to avoid: Coffee </td>
-            <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
-            <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary">View</a> -->
-              <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
-              <a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger">Delete</a></td>
-            {% elif medicine.title == 'digoxin' or medicine.title == 'aldactone' %}
-            <td>{{ medicine.title }}</td>
-            <td>Foods to avoid: Black liquorice </td>
-            <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
-            <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary">View</a> -->
-              <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
-              <a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger">Delete</a></td>
-            {% elif medicine.title == 'warfarin' or medicine.title == 'Coumadin' %}
-            <td>{{ medicine.title }}</td>
-            <td>Foods to avoid: Green Vegetables </td>
-            <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
-            <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary"View</a> -->
-              <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
-              <a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger">Delete</a></td>
-            {% elif medicine.title == 'marplan' or medicine.title == 'nardil' or medicine.title == 'emsam' or medicine.title == 'parnate' or medicine.title == 'tranylcypromine' or medicine.title == 'procarbazine'   %}
-            <td>{{ medicine.title }}</td>
-            <td>Foods to avoid: aged cheese,air-dried sausages </td>
-            <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
-            <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary">View</a> -->
-              <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
-              <td></td><a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger">Delete</a></td>
-            {% elif medicine.title == 'levaquin' or medicine.title == 'avelox' or medicine.title == 'quinolone' or medicine.title == 'tetracycline' or medicine.title == 'tranylcypromine' or medicine.title == 'ciprofloxacin'   %}
-            <td>{{ medicine.title }}</td>
-            <td>Foods to avoid: Dairy Products </td>
-            <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
-            <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary">View</a> -->
-              <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
-              <a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger">Delete</a></td>
-            {% else %}
-            <td>{{ medicine.title }}</td>
-            <td> No Interaction </td>
-            <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
-            <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td> -->
-              <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
-              <td><a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-            {% endif %}
-        </tr>
-          {% empty  %}
-              <h3>No medicines for today</h3>
-      
-          {% endfor %}
-      </table>
+              <td><button  class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+          </tr>
+        </table>
 
         <h2 style="color: rgb(60, 24, 100)">Night</h2>
         <h5>after 8:00pm</h5><br>
@@ -461,7 +358,7 @@
           <td><button class="btn btn-success" onclick="right()"><i class="fa fa-check" aria-hidden="true"></i></button></td>
           <!-- <td><a href= "{% url 'medicine' medicine.id %}" class="btn btn-primary">View</a> -->
           <!-- <a href= "{% url 'medicine-edit' medicine.id %}"  class="btn btn-danger">Edit</a> -->
-          <a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger">Delete</a></td>
+          <td><a href= "{% url 'medicine-delete' medicine.id %}"  class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a></td>
           {% elif medicine.title == 'morphine' or medicine.title == 'codeine' or medicine.title == 'paracetamol' or medicine.title == 'metronidazole' %}
           <td>{{ medicine.title }}</td>
           <td>Foods to avoid: Alcohol</td>
