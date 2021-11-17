@@ -1,0 +1,620 @@
+@font-face {
+    font-family: 'Gilroy-regular';
+    src: url("../fonts/Gilroy-Regular.eot");
+    src: local("../fonts/Gilroy Regular"), local("../fonts/Gilroy-Regular"), url("../fonts/Gilroy-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Gilroy-Regular.woff") format("woff"), url("../fonts/Gilroy-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Gilroy-light';
+    src: url("../fonts/Gilroy-Light.eot");
+    src: local("../fonts/Gilroy Light"), local("../fonts/Gilroy-Light"), url("../fonts/Gilroy-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Gilroy-Light.woff") format("woff"), url("../fonts/Gilroy-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  /* *, *:before, *:after {
+    box-sizing: border-box;
+  } */
+  
+  
+  input, button, textarea {
+    font-family: 'Gilroy-light', sans-serif;
+    outline: none;
+  }
+  
+  button {
+    font-family: 'Gilroy-light', sans-serif;
+    cursor: pointer;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  a, a:visited, a:hover {
+    text-decoration: none;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  h1, h2, h3, h4, h5, h6, p, ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  /* .body__wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#ffa683, #99a1cf);
+  } */
+  
+  .medicine {
+    position: relative;
+    /* display: flex; */
+    /* flex-direction: column;
+    justify-content: flex-end; */
+    margin-left: -30px;
+    width: 1200px;
+    background-color: #fff;
+    box-shadow: 0 0 30px #bbbfda;
+    margin-top: 60px;
+    /* overflow: hidden; */
+  }
+  
+  .medicine__header {
+    display: flex;
+    padding: 15px 100px;
+    background: #F7EFED;
+    box-shadow: 0 15px 20px #F7EFED;
+    margin-bottom: 20px;
+  }
+  
+  .medicine__week {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .medicine__current-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    color: #000;
+    margin: 10px auto;
+    border-radius: 20px;
+    background-color: #ffb9b9;
+  }
+  
+  .medicine__current-day-number {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .medicine__current-day-name {
+    font-size: 23px;
+  }
+  
+  /* .medicine__days {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+  
+*/
+  
+  .medicine__modal {
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(222, 230, 230, 0.5);
+    z-index: 5;
+  }
+  
+  .medicine__modal-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 25px;
+    color: #000;
+    background-color: #fff;
+  }
+  
+  .medicine__modal-form input {
+    padding: 8px 12px;
+    border: none;
+    box-shadow: 0 0 20px #bed9e2;
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .week-day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 70px;
+    padding: 10px;
+    border-radius: 30px;
+    background: linear-gradient(#b2bae6, #8491dd);
+    box-shadow: 0 0 10px #8491dd;
+    color: #47597AFF;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .week-day:hover {
+    background: linear-gradient(#FEAFC5, #FE718C);
+    color: #fff;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px #FEAFC5;
+  }
+  
+  .week-day__number {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  
+  .week-day__name {
+    font-size: 14px;
+  }
+  
+  .select-medicine__title {
+    display: inline-block;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .select-medicine__input {
+    margin-bottom: 20px;
+  }
+  
+  .select-medicine__types {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .select-medicine__type {
+    padding: 5px;
+    background-color: #E6E9EE;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #bfc6d3;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .select-medicine__type:hover {
+    box-shadow: 0 0 8px #92a0bb;
+  }
+  
+  .select-medicine__type-img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .select-medicine__dosage {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .select-medicine__dosage-input {
+    width: 150px;
+  }
+  
+  .select-medicine__days {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .select-medicine__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #E6E9EE;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #bfc6d3;
+  }
+  
+  .select-medicine__day:hover {
+    box-shadow: 0 0 8px #92a0bb;
+  }
+  
+  .select-medicine__method {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .select-medicine__method-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    background-color: #E6E9EE;
+    box-shadow: 0 0 5px #bed9e2;
+    font-size: 20px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  .select-medicine__method-time:hover {
+    box-shadow: 0 0 10px #92a0bb;
+  }
+  
+  .select-medicine__add-btn {
+    width: 250px;
+    padding: 10px 15px;
+    margin: 0 auto;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+    background: linear-gradient(#f09787, #fe7058);
+    border: none;
+    box-shadow: 0 5px 10px #fe7058;
+    transition: 0.3s;
+  }
+  
+  .select-medicine__close-btn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    right: -25px;
+    cursor: pointer;
+  }
+  
+  .day-time {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .day-time__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .day-time__logo {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #FE7137;
+    margin-bottom: 15px;
+    cursor: pointer;
+    box-shadow: 0 -5px 12px #FE7137;
+  }
+  
+  .day-time__logo-bg {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+  
+  .day-time__name {
+    font-size: 30px;
+    font-weight: 600;
+    color: #FE7137;
+    margin-bottom: 5px;
+  }
+  
+  .day-time__time {
+    font-size: 18px;
+    font-weight: 600;
+    color: #7B7B7C;
+  }
+  
+  .day-time__schedule {
+    max-height: 0;
+    opacity: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1;
+    transition: 1s;
+  }
+  
+  .day-time__bg {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1100px;
+    height: 600px;
+    border-radius: 50%;
+    background-color: #fff;
+    z-index: 0;
+  }
+  
+  .day-time__afternoon .day-time__logo {
+    background-color: #FF6352;
+    box-shadow: 0 0 20px #FF6352;
+  }
+  
+  .day-time__afternoon .day-time__name {
+    color: #FF6352;
+  }
+  
+  .day-time__afternoon .day-time__bg {
+    background-color: #F5F5F5;
+  }
+  
+  .day-time__afternoon .day-time__schedule {
+    background-color: #F5F5F5;
+  }
+  
+  .day-time__evening {
+    background-color: #F5F5F5;
+  }
+  
+  .day-time__evening .day-time__logo {
+    border: 2px solid #635AAD;
+    background-color: #fff;
+    box-shadow: none;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px #635AAD, 0 0 10px #635AAD;
+  }
+  
+  .day-time__evening .day-time__logo-bg {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    top: 0;
+    left: 55px;
+    background-color: #635AAD;
+  }
+  
+  .day-time__evening .day-time__name {
+    color: #635AAD;
+  }
+  
+  .day-time__evening .day-time__bg {
+    background-color: #EEEEEE;
+  }
+  
+  .day-time__evening .day-time__schedule {
+    background-color: #EEEEEE;
+  }
+  
+  .day-time__night {
+    background-color: #EEEEEE;
+  }
+  
+  .day-time__night .day-time__logo {
+    border: 2px solid #485593;
+    background-color: #fff;
+    box-shadow: inset 0 0 10px #485593, 0 0 10px #485593;
+    overflow: hidden;
+  }
+  
+  .day-time__night .day-time__logo-bg {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    top: -20px;
+    left: 55px;
+    background-color: #485593;
+  }
+  
+  .day-time__night .day-time__logo-dots {
+    position: absolute;
+    left: 40px;
+    top: 65px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+  
+  .day-time__night .day-time__logo-dots:nth-of-type(2) {
+    left: 38px;
+    top: 41px;
+  }
+  
+  .day-time__night .day-time__logo-dots:nth-of-type(3) {
+    left: 22px;
+    top: 57px;
+  }
+  
+  .day-time__night .day-time__logo-dots:nth-of-type(4) {
+    width: 5px;
+    height: 5px;
+    left: 23px;
+    top: 27px;
+  }
+  
+  .day-time__night .day-time__logo-dots:nth-of-type(5) {
+    left: 8px;
+    top: 38px;
+  }
+  
+  .day-time__night .day-time__name {
+    color: #555E93FF;
+  }
+  
+  .day-time__night .day-time__bg {
+    background-color: #E7E7E7;
+  }
+  
+  .day-time__night .day-time__schedule {
+    background-color: #E7E7E7;
+  }
+  
+  .pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 400px;
+    margin: 10px 0;
+  }
+  
+  .pill__image {
+    text-align: center;
+  }
+  
+  .pill__image-img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .pill__descr {
+    text-align: center;
+  }
+  
+  .pill__name, .pill__left-title, .pill__time-title {
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 15px 5px;
+    color: #292929;
+  }
+  
+  .pill__eating {
+    width: 100px;
+    margin: 0 auto;
+    padding: 2px 3px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #99a1cf;
+  }
+  
+  .pill__left-title, .pill__time-title {
+    font-size: 18px;
+  }
+  
+  .pill__amount, .pill__left-quant, .pill__time-amount {
+    font-size: 20px;
+    color: #7e7e7e;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .pill__left-quant, .pill__time-amount {
+    font-size: 16px;
+  }
+  
+  .pill__left, .pill__time {
+    width: 140px;
+    text-align: center;
+  }
+  
+  .pill__complete {
+    display: flex;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .pill__check-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .pill__check-icon:hover {
+    transform: scale(1.1);
+  }
+  
+  .pill__check-icon:first-child {
+    margin-right: 10px;
+  }
+  
+  .modal-btn {
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* bottom: 20px;
+    left: 20px;
+    width: 80px;
+    height: 80px; */
+    background: linear-gradient(#b2bae6, #8491dd);
+    border-radius: 50%;
+    box-shadow: 0 5px 10px #8491dd;
+    cursor: pointer;
+    /* z-index: 10; */
+  }
+  
+  .modal-btn__img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .schedule-show {
+    max-height: 500px;
+    opacity: 1;
+    transition-timing-function: ease;
+    transition: 1s;
+  }
+  
+  .modal-show {
+    display: flex;
+  }
+  
+  .active-medicine-type, .active-medicine-method {
+    background-color: #99a1cf;
+    box-shadow: 0 0 10px #99a1cf;
+  }
+  
+  .disabled {
+    opacity: 0.3;
+    transition: 0.3s;
+  }
+  
+  .background-add-btn {
+    background: linear-gradient(#f87d67, #ffa292);
+    box-shadow: inset 0 0 20px #ff654a, 0 5px 10px #f87d67;
+  }
+  
+  .active-week-day {
+    background: linear-gradient(#FEAFC5, #FE718C);
+    color: #fff;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px #feafc5;
+  }

@@ -15,6 +15,9 @@
         <link rel="stylesheet" href="{% static 'css/users/dashboard.css' %}">
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <style>
+            body{
+                color: black;
+            }
             .container{
                 margin-top: 70px;
                 border-radius: 20px;
@@ -51,7 +54,7 @@
                 outline:0px;
                 }
             .bubble2{
-                background-image: url("{% static 'images/bubble2.png' %}");
+                background-image: url("{% static 'images/b2.png' %}");
                 background-size: 250px 250px;
                 background-repeat: no-repeat;
                 height: 250px;  
@@ -60,7 +63,7 @@
                 background-color: transparent;
             }
             .bubble1{
-                background-image: url("{% static 'images/bubble1.png' %}");
+                background-image: url("{% static 'images/b1.png' %}");
                 background-size: 250px 250px;
                 background-repeat: no-repeat;
                 height: 250px;  
@@ -69,7 +72,7 @@
                 background-color: transparent;
             }
             .bubble3{
-                background-image: url("{% static 'images/bubble3.png' %}");
+                background-image: url("{% static 'images/b3.png' %}");
                 background-size: 250px 250px;
                 background-repeat: no-repeat;
                 height: 250px;  
@@ -82,68 +85,68 @@
     <body>
         <header class="header" id="header">
             <div class="container-fluid">
-                <img class="logo" src="{% static 'images/logo.png' %}">
-                <a style="color: white; margin-left: 20px;" href="{% url 'bmi' %}">BMI Calculator</a>
-                <a style="color: white; margin-left: 10px;" href="{% url 'gettype' %}">Adherence Type</a>
-              
-                <div class="nav-item dropdown" style="float: right;margin-right:20px">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                        <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
-                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                    </div>
+            <img class="logo" src="{% static 'images/logo.png' %}">
+            <a style="color: white; margin-left: 20px;" href="{% url 'bmi' %}">BMI Calculator</a>
+            <a style="color: white; margin-left: 10px;" href="{% url 'gettype' %}">Adherence Type</a>
+          
+            <div class="nav-item dropdown" style="float: right;margin-right:20px">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                 </div>
             </div>
+        </div>
         </header>
         <div class="l-navbar" id="nav-bar">
-          <nav class="nav">
-              <div>
-                <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
-                <div class="nav_list">
-                    <a href="{% url 'dashboard' %}" class="nav_link active">
-                        <img class="icon icon-home" src="{% static 'images/home.png' %}">
-                        <span class="nav_name">Home</span>
-                    </a>
-                    <a href="{% url 'medicines' %}" class="nav_link">
-                      <img class="icon icon-med" src="{% static 'images/med.png' %}">
-                      <span class="nav_name">Medicines</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                      <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
-                      <span class="nav_name">Notifications</span>
-                    </a>
-                    <a href="{% url 'foodrecom' %}" class="nav_link">
-                      <img class="icon icon-food" src="{% static 'images/food.png' %}">
-                      <span class="nav_name">Food Recommender</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
-                      <span class="nav_name">Analytics</span>
-                    </a>
-                    <!-- <a href="{% url 'gettype' %}" class="nav_link">
-                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
-                      <span class="nav_name">Get your type</span>
-                    </a> -->
-        
-                    <a href="{% url 'gamification' %}" class="nav_link">
-                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
-                      <span class="nav_name">Games</span>
-                    </a>
-                    <!-- <a href="{% url 'bmi' %}" class="nav_link">
-                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
-                      <span class="nav_name">Get your BMI</span>
-                    </a> -->
-                    <a href="#" class="nav_link">
-                      <img class="icon icon-user" src="{% static 'images/user.png' %}">
-                      <span class="nav_name">Profile</span>
-                    </a>
-        
-                  </div>
-              </div>
-          </nav>
-        </div>
+            <nav class="nav">
+                <div>
+                    <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
+                    <div class="nav_list">
+                        <a href="{% url 'dashboard' %}" class="nav_link active">
+                            <img class="icon icon-home" src="{% static 'images/home.png' %}">
+                            <span class="nav_name">Home</span>
+                        </a>
+                        <a href="{% url 'medicines' %}" class="nav_link">
+                          <img class="icon icon-med" src="{% static 'images/med.png' %}">
+                          <span class="nav_name">Medicines</span>
+                        </a>
+                        <a href="#" class="nav_link">
+                          <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
+                          <span class="nav_name">Notifications</span>
+                        </a>
+                        <a href="{% url 'foodrecom' %}" class="nav_link">
+                          <img class="icon icon-food" src="{% static 'images/food.png' %}">
+                          <span class="nav_name">Food Recommender</span>
+                        </a>
+                        <a href="#" class="nav_link">
+                          <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                          <span class="nav_name">Analytics</span>
+                        </a>
+                        <a href="{% url 'gameboard' %}" class="nav_link">
+                          <img class="icon icon-analytics" src="{% static 'images/game.png' %}">
+                          <span class="nav_name">Gameboard</span>
+                        </a>
+          
+                        <a href="{% url 'gamification' %}" class="nav_link">
+                          <img class="icon icon-analytics" src="{% static 'images/dice.png' %}">
+                          <span class="nav_name">Games</span>
+                        </a>
+                        <!-- <a href="{% url 'bmi' %}" class="nav_link">
+                          <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                          <span class="nav_name">Get your BMI</span>
+                        </a> -->
+                        <a href="#" class="nav_link">
+                          <img class="icon icon-user" src="{% static 'images/user.png' %}">
+                          <span class="nav_name">Profile</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+          </div>
         <div class="container">
+            <h5>We found that you skip medicines 'Unintentionally' ! We suspect this might be due to these factors. Get personalized aid for better medication </h5>
         <div class="row">
             <div class="col-md-4">
                 <!-- <img src = "{% static 'images/disablity.png' %}"> -->

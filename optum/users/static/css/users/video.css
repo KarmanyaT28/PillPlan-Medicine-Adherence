@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+body{
+    background-color: rgba(28, 180, 125, 0.8);
+    color:black;
+    overflow: hidden;
+}
+:root {
+    --header-height: 3rem;
+    --nav-width: 60px;
+    --first-color: #00455D;
+    --first-color-light: #97f5d6;
+    --white-color: #F7F6FB;
+    --body-font: 'Nunito', sans-serif;
+    --normal-font-size: 1rem;
+    --z-fixed: 100;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box
+}
+
+a {
+    text-decoration: none
+}
+
+.header {
+    width: 100%;
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: #04242F;
+    z-index: var(--z-fixed);
+    transition: .5s
+
+}
+
+.l-navbar {
+    position: fixed;
+    top: 0;
+    left: -20%;
+    width: var(--nav-width);
+    height: 100vh;
+    background: linear-gradient(to bottom,#04242F, #00455D 50%, #2aa887 100%);
+    padding: .5rem 1rem 0 0;
+    transition: .5s;
+    z-index: var(--z-fixed)
+}
+
+.l-navbar:hover {
+    width: 250px !important;	
+    display:inline-block;
+}
+.l-navbar:hover span{
+    display:inline-block;
+}
+
+.fa{
+    font-size: 24px;
+    left: -10px;
+}
+.nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden
+}
+
+.nav_logo,
+.nav_link {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    column-gap: 1rem;
+    padding: .5rem 0 .5rem 1.5rem
+}
+
+.nav_logo {
+    margin-bottom: 2rem
+}
+
+.nav_logo-icon {
+    font-size: 1.25rem;
+    color: var(--white-color)
+}
+
+.nav_link {
+    position: relative;
+    color: var(--first-color-light);
+    margin-bottom: 1.5rem;
+    transition: .3s
+}
+
+.nav_link:hover {
+    color: var(--white-color)
+}
+
+.nav_icon {
+    font-size: 1.25rem
+}
+
+.active {
+    color: var(--white-color)
+}
+
+.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color: var(--white-color)
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        margin: calc(var(--header-height) + 1rem) 0 0 0;
+        padding-left: calc(var(--nav-width) + 2rem)
+    }
+
+    .header {
+        height: calc(var(--header-height) + 1rem);
+        padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+    }
+
+    .l-navbar {
+        left: 0;
+        padding: 1rem 1rem 0 0
+    }
+
+}
+
+
+/* These are meant to give a better look to the links in col-md-2 */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+  }
+  
+  li a {
+    display: block;
+    color: #000;
+    padding: 8px 10px;
+    text-decoration: none;
+  }
+  
+  li a.active {
+    background-color: #8610b1;
+    color: white;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: rgb(182, 136, 202);
+    color: white;
+  }
+
+.logo{
+    height: 50px;
+    width: 70px;
+    margin-left: -30px;
+}
+
+.icon{
+    height: 22px;
+    width: 22px;
+}
+
+/* .container-videos{
+    background: url("{% static 'images/videos.png' %}");
+    height: 500px;
+    width: 1150px;
+    border-radius: 20px;
+} */

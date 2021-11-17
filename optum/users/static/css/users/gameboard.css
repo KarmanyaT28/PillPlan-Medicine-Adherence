@@ -188,7 +188,7 @@ ul {
 }
 
 .list-group{
-    width: 275px;
+    width: 300px;
 }
 #leaderboard{
     justify-content: center;
@@ -327,7 +327,8 @@ ul {
 }
 #points{
     color: #00455D;
-    width: 185px;
+    width: 200px;
+    height: 190px;
     padding: 5px;
 }
 @keyframes loading-1{
@@ -361,5 +362,13 @@ ul {
     }
 }
 #chart{
-    width: 373px;
+    width: 400px;
+    height: 320px;
+    margin-top: -30px;
+}
+
+
+#coupons{
+    width: 230px;
+    height: 150px;
 }

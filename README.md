@@ -5,6 +5,7 @@ To tackle this problem the PillPlan-Medicine Adherence provides awarness regardi
 motivate on their treatement journey.
 
 ## Key Features:
+
 - ### AI Based Yoga Trainer
 For faster recovery , physical health has also become an important aspect to focus on. Our AI trainer comes with posture detector where exercises are taught and the 
 user can then carry forward his/her fitness journey to have early recovery. A counter is attached with each exercise maintaining the reps and the correctness of each 

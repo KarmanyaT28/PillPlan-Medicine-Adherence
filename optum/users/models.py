@@ -72,7 +72,7 @@ class MyUser(AbstractBaseUser):
     emergency_name = models.CharField(verbose_name='emergency contact name' , max_length=200,blank=True,null=True)
     emergency_email= models.EmailField(verbose_name='emergency email address' ,max_length=60,unique=True,null=True)
     user_type = models.CharField(verbose_name='User Type', max_length = 50, default='Type A')
-    user_points = models.IntegerField(verbose_name='age',null=True, blank=True)
+    user_points = models.IntegerField(verbose_name='points',null=True, blank=True)
     filled_status = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -131,12 +131,13 @@ class Medicine(models.Model):
     
     drug_type = models.CharField(verbose_name='drug type' , max_length=50, null=True,blank=True)
     drug_qty = models.IntegerField(verbose_name='drug qty' , null=True,blank=True)
-    start_date = models.DateField(default=timezone.now, null=True)
-    end_date = models.DateTimeField(default=timezone.now, null=True)
+    # start_date = models.DateField(default=timezone.now, null=True)
+    # end_date = models.DateTimeField(default=timezone.now, null=True)
     drug_frequency = models.IntegerField(verbose_name='drug_frequency' , null=True,blank=True)
     upload = models.ImageField(upload_to ='uploads/',null=True,blank=True)
     man_date = models.DateField(verbose_name='manufacturing date',null=True)
     exp_date = models.DateField(verbose_name='expiry date',null=True)
+    drug_time = models.TimeField(verbose_name='drug time',null=True,blank=True)
     drug_comments = models.TextField(verbose_name ='drug comments' ,max_length=200,null=True,blank=True)
     
     # drug_REM
