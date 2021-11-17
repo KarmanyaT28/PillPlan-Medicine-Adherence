@@ -100,7 +100,7 @@
 </div>
 <div class="row" style="padding:5px;">
   <div class="col-md-1">
-    <button class="btn btn-dark"style="background-color: black" onclick="move(); points()"><a id="myLink" href="{% url 'infogame2' %}" target="game-frame">Done</a></button>  
+    <button class="btn btn-dark"style="background-color: black" onclick="move(); points()"><a id="myLink" target="game-frame">Done</a></button>  
   </div>
   <div class="col-md-11">
     <div id="myProgress">
@@ -110,6 +110,7 @@
 </div>
 <div class="row">
     <iframe id="game-frame" name="game-frame" src="{% url 'infogame1' %}" ></iframe>
+
 </div>
 <script>
 function points(){
@@ -123,7 +124,7 @@ function points(){
   },
   icon: 'success',
   title:'30 points unlocked', 
-  confirmButtonText: '<a href="{% url `gamehome` %}" style="color: white; text-decoration: none">Next</a>'     
+  confirmButtonText: `<a href="{% url 'gamification' %}" style="color: white; text-decoration: none">Next</a>`
             })
 },1200)}
  var widthValue = 0;

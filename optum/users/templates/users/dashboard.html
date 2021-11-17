@@ -96,6 +96,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link rel="stylesheet" href="{% static 'css/users/dashboard.css' %}">
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript">
+      (function(d, m){
+          var kommunicateSettings = 
+              {"appId":"3db6a7bccf548e83d59f7f56c225422c9","popupWidget":true,"automaticChatOpenOnNavigation":true};
+          var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+          s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+          var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+          window.kommunicate = m; m._globals = kommunicateSettings;
+      })(document, window.kommunicate || {});
+    /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+    </script>
     <script>
       window.onload = function () {
         CanvasJS.addColorSet("greenShades",
@@ -139,83 +150,76 @@
       </script>
 </head>
 <body>
-<header class="header" id="header">
+  <header class="header" id="header">
     <div class="container-fluid">
-        <img class="logo" src="{% static 'images/logo.png' %}">
-        <a style="color: white; margin-left: 20px;" href="{% url 'bmi' %}">BMI Calculator</a>
-        <a style="color: white; margin-left: 10px;" href="{% url 'gettype' %}">Adherence Type</a>
-      
-        <div class="nav-item dropdown" style="float: right;margin-right:20px">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
-                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-            </div>
+    <img class="logo" src="{% static 'images/logo.png' %}">
+    <a style="color: white; margin-left: 20px;" href="{% url 'bmi' %}">BMI Calculator</a>
+    <a style="color: white; margin-left: 10px;" href="{% url 'gettype' %}">Adherence Type</a>
+  
+    <div class="nav-item dropdown" style="float: right;margin-right:20px">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+            <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
         </div>
     </div>
+</div>
 </header>
 <div class="l-navbar" id="nav-bar">
-  <nav class="nav">
-      <div>
-          <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
-          <div class="nav_list">
-              <a href="{% url 'dashboard' %}" class="nav_link active">
-                  <img class="icon icon-home" src="{% static 'images/home.png' %}">
-                  <span class="nav_name">Home</span>
-              </a>
-              <a href="{% url 'medicines' %}" class="nav_link">
-                <img class="icon icon-med" src="{% static 'images/med.png' %}">
-                <span class="nav_name">Medicines</span>
-              </a>
-              <a href="#" class="nav_link">
-                <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
-                <span class="nav_name">Notifications</span>
-              </a>
-              <a href="{% url 'foodrecom' %}" class="nav_link">
-                <img class="icon icon-food" src="{% static 'images/food.png' %}">
-                <span class="nav_name">Food Recommender</span>
-              </a>
-              <a href="#" class="nav_link">
-                <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
-                <span class="nav_name">Analytics</span>
-              </a>
-              <a href="{% url 'gameboard' %}" class="nav_link">
-                <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
-                <span class="nav_name">Gameboard</span>
-              </a>
-
-              <a href="{% url 'gamification' %}" class="nav_link">
-                <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
-                <span class="nav_name">Games</span>
-              </a>
-              <!-- <a href="{% url 'bmi' %}" class="nav_link">
-                <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
-                <span class="nav_name">Get your BMI</span>
-              </a> -->
-              <a href="#" class="nav_link">
-                <img class="icon icon-user" src="{% static 'images/user.png' %}">
-                <span class="nav_name">Profile</span>
-              </a>
-
-              
-
-          </div>
-      </div>
-  </nav>
-</div>
+    <nav class="nav">
+        <div>
+            <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
+            <div class="nav_list">
+                <a href="{% url 'dashboard' %}" class="nav_link active">
+                    <img class="icon icon-home" src="{% static 'images/home.png' %}">
+                    <span class="nav_name">Home</span>
+                </a>
+                <a href="{% url 'medicines' %}" class="nav_link">
+                  <img class="icon icon-med" src="{% static 'images/med.png' %}">
+                  <span class="nav_name">Medicines</span>
+                </a>
+                <a href="{% url 'foodrecom' %}" class="nav_link">
+                  <img class="icon icon-food" src="{% static 'images/food.png' %}">
+                  <span class="nav_name">Food Recommender</span>
+                </a>
+                <a href="#" class="nav_link">
+                  <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                  <span class="nav_name">Analytics</span>
+                </a>
+                <a href="{% url 'gameboard' %}" class="nav_link">
+                  <img class="icon icon-analytics" src="{% static 'images/game.png' %}">
+                  <span class="nav_name">Gameboard</span>
+                </a>
+  
+                <a href="{% url 'gamification' %}" class="nav_link">
+                  <img class="icon icon-analytics" src="{% static 'images/dice.png' %}">
+                  <span class="nav_name">Fun & Learn</span>
+                </a>
+                <!-- <a href="#" class="nav_link">
+                  <img class="icon icon-user" src="{% static 'images/user.png' %}">
+                  <span class="nav_name">Profile</span>
+                </a> -->
+                <a href="http://localhost/mediplus/customer_pages/customer_login.php" class="nav_link" target="_blank">
+                  <img class="icon icon-bell" src="{% static 'images/store.png' %}">
+                  <span class="nav_name">E-Pharmacy</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+  </div>
 <div class="row">
   <div class="col-sm-9">
       <div class="row upper-section">
         <div class="col-md-7" style="padding-left: 20px; padding-top: 20px;">
-          <img class="user-img" style="float: left; " width="150" height="150"src="{% static 'images/user1.png' %}" alt="Avatar">
+          <img class="user-img" style="float: left; " width="150" height="150"src="{% static 'images/joyeeta.jpg' %}" alt="Avatar">
           <h1 style="float: left; margin-top: 20px; margin-left: 20px"> Hello {{request.user.first_name}}</h1>
         </div>
         <div class="col-md-5">
           <h4 style="color: #002468;">💊Upcoming Medications💊</h4>
           <ol class="medicine-list">
             {% for med in med_list %}
-            <li>{{ med.title }}</li>
+            <li>{{ med.title }}  - {{ med.drug_time }} </li>
             {% endfor %}
           </ol>
           <!-- {{ med_list }} -->
@@ -245,18 +249,19 @@
         </div>
         </div>
   <div class="col-sm-3 justify-content-center">
-    <h5>Emergency contact<br>   {{request.user.emergency_name}}</h5>
+    <h5>Synced Care Partner<br>   {{request.user.emergency_name}}</h5>
     <div id="contact">
-      <img class="user-img" width="150" height="150"src="{% static 'images/user1.png' %}" alt="Avatar"><br><br>
+      <img class="user-img" width="150" height="150"src="{% static 'images/dhyani.jpg' %}" alt="Avatar"><br><br>
       <button class="btn btn-primary">Contact</button>
       <button class="btn btn-primary">Modify</button>
-    </div>
+    </div><br><hr><br>
     <h5>Call Ambulance</h5>
     <div id="contact">
       <img class="user-img" width="180" height="120"src="{% static 'images/ambulance.png' %}" alt="Avatar"><br><br>
       <button style="margin-top: -20px; margin-left: 50px" class="btn btn-danger">Contact</button>
     </div>
   </div>
+  <iframe src="{% static 'bmi' %}"></iframe>
 </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

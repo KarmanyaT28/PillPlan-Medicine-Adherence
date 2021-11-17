@@ -14,8 +14,33 @@ from django.contrib.auth.decorators import login_required
 # from .forms import PillForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import datetime
 
 import joblib
+
+
+def get_part_of_day(h):
+    return (
+        "morning"
+        if 5 <= h <= 11
+        else "afternoon"
+        if 12 <= h <= 17
+        else "evening"
+        if 18 <= h <= 22
+        else "night"
+    )
+
+
+# To use current hour:
+
+# part = get_part_of_day(datetime.now().hour)
+# print(f"Have a good {part}!")
+
+
+# for hour in range(0, 24):
+#     part = get_part_of_day(hour)
+#     print(f"hour {hour} is {part}")
+
 
 
 def landing(request):
@@ -88,7 +113,7 @@ def logoutUser(request):
 def dashboard(request):
     log_user = request.user
     med_list = Medicine.objects.filter(user=log_user)
-    return render(request,'users/dashboard.html',{'med_list':med_list})
+    return render(request,'users/dashboard.html',{'med_list':med_list.order_by('drug_time')})
 
 #-----------------------------------------------------------------
 
@@ -126,7 +151,7 @@ def result(request):
     elif(ans[0]=='adh'):
         return redirect('gamification')
     else:
-        return redirect('dashboard')
+        return redirect('usertype_in')
 
 
 @login_required(login_url = 'login')
@@ -161,7 +186,7 @@ import numpy as np
 def bmiresult(request):
 
 
-    clsf = joblib.load("bmi.sav")
+    clsf = joblib.load("C:/Users/Joyeeta/Desktop/optum/PillPlan-Medicine-Adherence/optum/bmi.sav")
     # lis = []
 
     # lis.append(request.GET['height'])
@@ -229,6 +254,8 @@ class TaskList(LoginRequiredMixin,ListView):
         context = super().get_context_data(**kwargs)
         context['medicines'] = context['medicines'].filter(user=self.request.user)
         context['count'] = context['medicines'].filter(complete=False).count()
+        context['drug_time'] = context['medicines'].filter(complete=False)
+        
         return context
 
 class TaskDetail(LoginRequiredMixin,DetailView):
@@ -239,7 +266,7 @@ class TaskDetail(LoginRequiredMixin,DetailView):
 
 class TaskCreate(LoginRequiredMixin,CreateView):
     model = Medicine
-    fields = ['title','description','complete','drug_type','drug_qty','start_date','end_date','drug_frequency','upload','man_date','exp_date','drug_comments']
+    fields = ['title','description','complete']
     template_name = "users/Medicines/medicineform.html"
     success_url = reverse_lazy('medicines')
 
@@ -251,11 +278,11 @@ class TaskCreate(LoginRequiredMixin,CreateView):
 
 class TaskUpdate(LoginRequiredMixin,UpdateView):
     model=Medicine
-    fields = ['title','description','complete']
+    fields = ['title','description','complete','drug_type','drug_qty','drug_frequency','upload','man_date','exp_date','drug_time','drug_comments']
     template_name = "users/Medicines/medicineform.html"
     success_url = reverse_lazy('medicines')
 
-
+# 'start_date','end_date'
 class TaskDelete(LoginRequiredMixin,DeleteView):
     model=Medicine
     context_object_name = 'medicine'
@@ -294,9 +321,19 @@ def videos(request):
 
 @login_required(login_url = 'login')
 def gameboard(request):
-    user_list = MyUser.objects.all()
+    user_list = MyUser.objects.all().order_by('-user_points')
     return render(request,'users/gameboard.html',{'user_list':user_list})
 
 @login_required(login_url = 'login')
 def usertype_un(request):
     return render(request,'users/usertype_un.html')
+
+@login_required(login_url = 'login')
+def usertype_in(request):
+    return render(request,'users/usertype_in.html')
+
+@login_required(login_url = 'login')
+def data(request):
+    return render(request,'users/data.html')
+
+

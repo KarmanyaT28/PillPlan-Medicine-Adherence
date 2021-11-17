@@ -1,7 +1,271 @@
-<h1>Medicine Form</h1>
-<a href="{% url 'medicines' %}">Go Back</a>
-<form method="POST" action="">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'css/users/profile.css' %}">
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <style>
+      body{
+        color:black;
+      }
+      #capsule{
+        background-image: url("{% static 'images/capsule.svg' %}");
+      }
+      select #drug_type option[value="capsule"]   { 
+        
+        }
+        [type=radio] { 
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        }
+
+        /* IMAGE STYLES */
+        [type=radio] + img {
+        cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+        outline: 5px solid rgb(248, 141, 19);
+        border-radius: 5px;
+        }
+
+        #radio-img{
+            height: 100px;
+            width: 100px;
+        }
+        form{
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            width: 800px;
+            margin-left: 250px;
+            margin-bottom: 50px;
+            margin-top: 80px;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"]{
+            border-radius: 15px;
+            border: 2px solid #00455D;;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container-fluid">
+        <img class="logo" src="{% static 'images/logo.png' %}">
+        <a style="color: white; margin-left: 20px;" href="{% url 'bmi' %}">BMI Calculator</a>
+        <a style="color: white; margin-left: 10px;" href="{% url 'gettype' %}">Adherence Type</a>
+      
+        <div class="nav-item dropdown" style="float: right;margin-right:20px">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" style="color: white"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'foodrecom' %}">Food Recommender</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+    </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i></span> </a>
+                <div class="nav_list">
+                    <a href="{% url 'dashboard' %}" class="nav_link active">
+                        <img class="icon icon-home" src="{% static 'images/home.png' %}">
+                        <span class="nav_name">Home</span>
+                    </a>
+                    <a href="{% url 'medicines' %}" class="nav_link">
+                      <img class="icon icon-med" src="{% static 'images/med.png' %}">
+                      <span class="nav_name">Medicines</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                      <img class="icon icon-bell" src="{% static 'images/bell.png' %}">
+                      <span class="nav_name">Notifications</span>
+                    </a>
+                    <a href="{% url 'foodrecom' %}" class="nav_link">
+                      <img class="icon icon-food" src="{% static 'images/food.png' %}">
+                      <span class="nav_name">Food Recommender</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                      <span class="nav_name">Analytics</span>
+                    </a>
+                    <a href="{% url 'gameboard' %}" class="nav_link">
+                      <img class="icon icon-analytics" src="{% static 'images/game.png' %}">
+                      <span class="nav_name">Gameboard</span>
+                    </a>
+      
+                    <a href="{% url 'gamification' %}" class="nav_link">
+                      <img class="icon icon-analytics" src="{% static 'images/dice.png' %}">
+                      <span class="nav_name">Games</span>
+                    </a>
+                    <!-- <a href="{% url 'bmi' %}" class="nav_link">
+                      <img class="icon icon-analytics" src="{% static 'images/analytics.png' %}">
+                      <span class="nav_name">Get your BMI</span>
+                    </a> -->
+                    <a href="#" class="nav_link">
+                      <img class="icon icon-user" src="{% static 'images/user.png' %}">
+                      <span class="nav_name">Profile</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+      </div>
+<form method="POST" action="" class="fomr-control">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-header">
+                <h1 style="text-align:center">Set Medicine Reminder</h1><hr><br>
+            </div>
+        </div>
+        <div class="col-md-2">            
+            <a href="{% url 'medicines' %}" style="background-color: rgb(255, 104, 66); float: right;" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+        </div>
+    </div>
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
+    <div class="row">
+        <div class="col-md-11">
+            <div class="form-group">
+                <label for="title">Drug Name</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="drug name" required><br>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label for="title">Drug Description (optional) </label>
+                <input type="text" class="form-control" name="description" id="description" placeholder="drug description"><br>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <label for="complete">Completed ?</label>
+            <input  class="form-control" type="checkbox" name="complete" id="complete">
+        </div>
+    </div>
+        <div class="form-group">
+            <label for="drug_type">Drug Type</label><br>
+            <div class="row">
+            <div class="col-md-3">
+                <label>
+                    <input type="radio" name="drug_type" value="capsule">
+                    <img id="radio-img" src="{% static 'images/capsule.svg' %}">
+                  </label>
+            </div>
+            <div class="col-md-3">
+                <label>
+                    <input type="radio" name="drug_type" value="pills">
+                    <img id="radio-img" src="{% static 'images/pills.svg' %}">
+                  </label>
+            </div>
+            <div class="col-md-3">
+                <label>
+                    <input type="radio"name="drug_type" value="injection" >
+                    <img id="radio-img" src="{% static 'images/injection.svg' %}">
+                  </label>
+            </div>
+            <div class="col-md-3">
+                <label>
+                    <input type="radio" name="dropper" value="dropper" >
+                    <img id="radio-img" src="{% static 'images/capsule.svg' %}">
+                  </label>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="drug_qty">Drug Quantity per dose</label>
+                <input type="number" class="form-control" name="drug_qty" id="drug_qty" placeholder="drug qty" required><br>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="start_date">Dose Starting Date</label>
+                <input type="date" class="form-control" name="start_date" id="start_date" placeholder=""><br>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="end_date">Dose Ending Date</label>
+                <input type="date" class="form-control" name="end_date" id="end_date" placeholder=""><br>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="drug_time">Drug Time</label>
+                <input type="time" class="form-control" name="drug_time" id="drug_time" placeholder="drug time" required><br>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <label style="text-align:center" for="drug_mealtime">Drug Before and After Meal</label><br>
+                <div class="row">
+                <div class="col-md-6">
+                    <label>
+                        <input type="radio" name="drug_mealtime" value="before">
+                        <img id="radio-img" src="{% static 'images/before-meal.png' %}">
+                      </label>
+                </div>
+                <div class="col-md-6">
+                    <label>
+                        <input type="radio" name="drug_mealtime" value="after">
+                        <img id="radio-img" src="{% static 'images/after-meal.png' %}">
+                      </label>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="drug_frequency">Drug Frequency</label>
+                <input type="number" class="form-control" name="drug_frequency" id="drug_frequency" placeholder="drug frequency" required><br>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="start_date">Drug Mnf Date (Optional)</label>
+                <input type="date" class="form-control" name="start_date" id="start_date" placeholder="" required><br>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="end_date">Dose Expiry Date (Optional)</label>
+                <input type="date" class="form-control" name="end_date" id="end_date" placeholder="" required><br>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <input name="submit" type="submit" style="width: 100%;" class="btn btn-danger" value="submit"><br>
+        </div>
+    </div>
+    <p>*we calculate the duration of doses for you and keep track of prescription refill <br>
+        *we keep track of the expiry date of your medicine<br>
+        *we check for drug-food interactions</p>
+    
 </form>
+
+<script>
+    jQuery('.modal-content .calendar').datepicker({ dateFormat: "yy-mm-dd" });
+
+</script>

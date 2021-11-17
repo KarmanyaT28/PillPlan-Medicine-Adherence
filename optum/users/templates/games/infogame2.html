@@ -30,7 +30,7 @@ body {
     border-radius:10px;
 }
 #bathroom {
-    background-image: url("{% static 'images/bathroom.png' %}");
+    background-image: url("{% static 'images/bathoroom.png' %}");
     background-size: 250px 250px;
     background-color: rgb(133, 212, 248);
     height: 250px;  
@@ -130,7 +130,7 @@ body {
             imageHeight: 300,
             imgaeWidth:300,
             imageAlt: 'A tall image',
-            confirmButtonText: '<a href="{% url `infogame3` %}" target="game-frame" style="color: white; text-decoration: none">Next</a>'
+            confirmButtonText: `<a href="{% url 'infogame3' %}" target="game-frame" style="color: white; text-decoration: none">Next</a>`
             })
             
         }

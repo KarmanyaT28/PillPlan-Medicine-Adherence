@@ -31,7 +31,9 @@ urlpatterns = [
     path('videos/', views.videos,name='videos'),
     path('gameboard/', views.gameboard,name='gameboard'),
     path('usertype_un/', views.usertype_un,name='usertype_un'),
+    path('usertype_in/', views.usertype_in,name='usertype_in'),
     path('financeinfo/', views.financeinfo,name='financeinfo'),
+    path('data/', views.data,name='data'),
    
 ]
 
