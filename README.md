@@ -1,40 +1,159 @@
 # PillPlan-Medicine-Adherence
 
-Medical non-adherence is many times also triggered  by lack of basic knowledege of improper uses of medication devices or using expired  damaged or improperly stored medicine.
-To tackle this problem the PillPlan-Medicine Adherence provides awarness regarding such issues by enagaging the patient through fun games from which they earn points to stay 
-motivate on their treatement journey.
+<div id="top"></div>
 
-## Key Features:
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#projecttree">Project Tree</a></li>
+    <li><a href="#contributors">Contributors</a></li>
+    <li><a href="#demovideo">Demo Video Link</a></li>
+   
+  </ol>
+</details>
 
-- ### AI Based Yoga Trainer
-For faster recovery , physical health has also become an important aspect to focus on. Our AI trainer comes with posture detector where exercises are taught and the 
-user can then carry forward his/her fitness journey to have early recovery. A counter is attached with each exercise maintaining the reps and the correctness of each 
-one of them is maintained. A scoring system based on the posture detection system running in real-time in the background. The user is awarded points based on the workout 
-which are latter added to user score .
+<div align="center">
+  <img src="logo.png" alt="Logo" width="95" height="80">
 
-- ### AI Based Drug-Food Interaction System
-A drug interaction is a situation in which a substance affects the activity of a drug, i.e. the effects are increased or decreased, or they produce a new effect that neither 
-produces on its own. These interactions may occur out of accidental misuse or due to lack of knowledge about the active ingredients involved in the relevant substances. In our
-project after text-scrapping from various official medical websites a database for drug-food/beverage interaction was created. After which the detailed study of  SMILE structure 
-of drug and applying unsupervised machine learning techniques a smart drug-food/beverage interaction is created. On entering the drug into a user’s medicine reminder , the system
-prompts the food or beverage that should be avoided while taking a particular drug. Food-drug interactions can produce negative effects in safety and efficacy of drug therapy, 
-as well in the nutritional status of the patients , hence this smart checker works towards proper and better recovery
+  <h3 align="center">Pill Plan - All-in-one Medication Solution</h3>
+</div>
 
-- ### Disease Predicting System
-Users can use disease prediction system to find the possible diseases based on symptoms and also see related medicines.
+<!-- ABOUT THE PROJECT -->
+# About The Project
 
-- ### Smart ChatBot
-A smart chatbot which can guide the users through the features of the page and answer the related questions of the user. They can also display medicines related 
-to type a place order.
+![Pillplan Dashboard](dashboard.png)
 
-- ### SMS Alerts
-Pill Plan keeps track of your medicines and sends timely reminder sms alerts. This helps in minimizing the chances that our customers miss their medicines.
+Medication nonadherence is a complex problem that stems from several factors including the healthcare system, disease-related conditions, therapy-related factors, socioeconomic status, and the patients themselves. Medication nonadherence is a growing concern to clinicians, healthcare systems, and other stakeholders (eg, payers) because of mounting evidence that it is prevalent and associated with adverse outcomes and higher costs of care.
 
-- ### Substitute Search Tool
-Sometimes the required drug is unavailable or too expensive, and in this case, the user needs to be able to find its effective substitute. That's when he needs a Substitute 
-Search tool.
+Hence our solution for  ensuring medical adherence should include the following points:
 
-## Authors
-- Joyeeta Dey
-- Karmanya Tyagi
-- Dhyani Desai
+Here's why:
+* Data Analytics on given dataset to find the category of population falling into the category of non-adherence
+* Smart Pill Reminders and Refill Alerts 
+* AI/ML induced smart chatbots for Doctor Appointment Schedule and Pill Reminder with Google Calendar
+* Predicting the type of non-adherence using predictive analytics and behavioral technology can be considered to give patients the personalized support they need to achieve greater adherence
+* Creating an engaging UI/UX experience (visually interactive for minorities and illiterate population to understand)
+* Synced Care Partner system with gps tracking using Google Maps
+* Various drug helper tools like Food-Drug interaction checker, Food-Allergy checker and drug-drug interaction checker
+* Tracking the progress of patients and their peers progress to  identify where they have reached in their treatment journey through gamification.
+* Imparting basic knowledge regarding medicine storage, medical equipment usage , false assumptions through various gamification approach .
+* Reward system based engaging portal that keeps the patients motivated to complete their medication journey on time.
+
+
+# Built With
+
+Major Frameworks, Libraries and Algorithms used
+
+Front End
+* HTML,CSS,Javascript
+* Bootstrap,Ajax,JQuery etc.
+
+Framework
+* Django
+* PHP
+
+Machine Learning Algorithms
+* Naive Bayes Classifier
+* Support Vector Machines
+* XGBoost Algorithms
+* KNN 
+
+Other Algorithms
+* Dijkstra's Algorithm and Shortest Time path  Algorithms
+* Content-Based Recommendation System
+* Deep Learning Posture Detection Algorithms
+* NLP Sentiment Analysis Model
+
+Other tools
+* Tensorflow,Open CV
+* GTTS module, Google Geolocation
+* Python ML,DL libraries
+* Beautiful Soup , Web Scraping 
+
+Hardware Component
+* Arduino simulation using Tinkercad
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- GETTING STARTED -->
+# Installation
+
+* Clone the repository using the following command
+```sh
+git clone https://github.com/joyeetadey/PillPlan-Medicine-Adherence.git
+```
+* Create a virtal envirnoment 
+```sh
+virtualenv venv
+venv\Scripts\activate
+```
+* Go to the directory and install the requirements
+```sh
+pip install -r requirements.txt
+```
+* Start the django server
+```sh
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
+# Prerequisites
+* To start the calendar API and google maps API you need your API ke and Client ID
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+# Project tree
+
+.
+ * [Readme.md](./README.md)
+ * [Data Analytics](./Data-Analytics)
+ * [IOT-Aduino-medicine-reminder](./IOT-Aduino-medicine-reminder)
+ * [Mediplus-Pharmacy](./Mediplus-Pharmacy)
+ * [optum](./optum)
+   * [optum](./optum/optum)
+   * [users](./optum/users)
+      * [models](./optum/users/models)
+      * [static](./optum/users/static)
+      * [templates](./optum/users/templates)
+        * [users](./optum/users/templates/users)
+        * [games](./optum/users/templates/games)
+   * [manage.py](./optum/manage.py)
+ * [file_in_root.ext](./file_in_root.ext)
+ * [README.md](./README.md)
+ * [dir3](./dir3)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- CONTACT -->
+# Contributors
+
+* <h4 align="left"><a href="https://github.com/joyeetadey">Joyeeta Dey</a></h4>
+* <h4 align="left"><a href="https://github.com/dhyanid13">Dhyani Desai</a></h4>
+* <h4 align="left"><a href="https://github.com/KarmanyaT28">Karmanya Tyagi</a></h4>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+# Demo Video Link
+
+https://drive.google.com/file/d/1PD-_MsMhHz6NZK4fb_Fei8ZnfEHNE_Ai/view?usp=sharing
